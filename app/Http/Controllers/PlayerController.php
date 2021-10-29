@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 class PlayerController extends Controller
 {
     function getPlayersView() {
-
+        return view('layouts.master');
     }
 
     function getPlayerView($uuid, $name) {
-
+        
     }
 
     function getPlayerEditView($uuid, $name) {
@@ -27,6 +27,6 @@ class PlayerController extends Controller
     }
 
     function processAddGameStats(Request $request) {
-        
+
     }
 }
