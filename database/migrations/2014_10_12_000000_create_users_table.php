@@ -14,9 +14,17 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->uuid('uuid')->primary();
+            $table->string('last_name');
+            $table->string('first_name');
+            $table->char('gender', 1);
+            $table->date('date');
             $table->string('email')->unique();
+            $table->enum('dominant_hand', ['left', 'right']);
+            $table->enum('position', ['centre backcourt', 'goalkeeper', 'left backcourt', 'left wingman', 'pivot', 'right backcourt', 'right wingman']);
+            $table->decimal('height', $precicison = 3, $scale = 2);
+            $table->decimal('weight', $precision = 4, $scale = 1);
+            $table->foreignId('club_id')->constrained();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

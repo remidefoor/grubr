@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class PlayerController extends Controller
 {
     function getPlayersView() {
-        return view('layouts.master');
+        return view('pages.players');
     }
 
     function getPlayerView($uuid, $name) {
