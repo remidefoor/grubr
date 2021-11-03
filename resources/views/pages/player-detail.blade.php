@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('main')
-    <form method='POST' action=''>  <!-- TODO provide action -->
+    <form method='POST' action=''>  <!-- TODO add parameter with route -->
         @csrf
         <label for='email'>Email address</label>
         <input type='email' id='email' name='email' required />

@@ -12,10 +12,15 @@
 <body>
     <header>
         <nav>
-            <p>players</p>
-            <p>my profile</p>
-            <p>login</p>
-            <p>sign out</p>
+            <a href={{route('get-players')}}>players</a>
+
+            @guest
+                <a href=''>login</a>  <!-- TODO add route -->
+                <a href=''>register</a>  <!-- TODO add route name -->
+            @else
+                <a href=''>my profile</a>  <!-- TODO add parameter with route -->
+                <a href=''>sign out</a>  <!-- TODO add route name -->
+            @endguest
         </nav>
     </header>
 
