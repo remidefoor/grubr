@@ -31,6 +31,5 @@
     <footer>
         <p>&copy; Rémi Defoor</p>
     </footer>
-    
 </body>
 </html>

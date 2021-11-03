@@ -23,7 +23,7 @@
         <label for='club'>Club</label>
         <input id='club' name='club' list='clubs' required />
         <datalist id='clubs' name='clubs'>
-            @for ($i = 1; $i < count($clubs); $i++)
+            @for ($i = 0; $i < count($clubs); $i++)
                 <option value={{$clubs[$i]->name}} />
             @endfor
         </datalist>
