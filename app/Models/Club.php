@@ -9,6 +9,8 @@ class Club extends Model
 {
     use HasFactory;
 
+    // TODO refine model
+
     public function users() {
         return $this->hasMany(User::class);
     }

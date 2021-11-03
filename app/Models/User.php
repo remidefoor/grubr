@@ -6,11 +6,14 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    // TODO refine model
 
     /**
      * The attributes that are mass assignable.
@@ -48,5 +51,21 @@ class User extends Authenticatable
 
     public function statistics() {
         return $this->hasMany(Statistic::class);
+    }
+
+    public static function getEnumValues($columnName) {  // TODO validate
+        $arr = DB::select(DB::raw('SHOW COLUMNS FROM users WHERE Field = "'.$columnName.'"'));
+        if (count($arr) == 0){
+            return array();
+        }
+
+        // Pulls column string from DB
+        $enumStr = $arr[0]->Type;
+    
+        // Parse string
+        preg_match_all("/'([^']+)'/", $enumStr, $matches);
+    
+        // Return matches
+        return isset($matches[1]) ? $matches[1] : [];
     }
 }
