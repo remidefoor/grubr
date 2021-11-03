@@ -5,13 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>scout.me</title>
-    <link rel='stylesheet' type='text/css' href='{{asset('css/reset.css')}}'/>
+    <!-- <link rel='stylesheet' type='text/css' href='{{asset('css/reset.css')}}'/> -->
     <link rel='stylesheet' type='text/css' href='{{asset('css/style.css')}}'/>
     @yield('headInfo')
 </head>
 <body>
     <header>
-        <p>login</p>
+        <nav>
+            <p>players</p>
+            <p>my profile</p>
+            <p>login</p>
+            <p>sign out</p>
+        </nav>
     </header>
 
     <main>

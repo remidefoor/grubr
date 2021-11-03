@@ -21,12 +21,12 @@ Route::post('/player/{uuid}/{name}/edit', [PlayerController::class, 'processPlay
     ->name('post-player-edit')
     /*->middleware('auth')*/;
 
-Route::get('/player/{uuid}/{name}/add-game-stats', [PlayerController::class, 'getAddGameStatsView'])
-    ->name('get-add-game-stats')
+Route::get('/player/{uuid}/{name}/add-statistic', [PlayerController::class, 'getAddStatisticView'])
+    ->name('get-add-statistic')
     /*->middleware('auth')*/;
 
-Route::post('/player/{uuid}/{name}/add-game-stats', [PlayerController::class, 'processAddGameStats'])
-    ->name('post-add-game-stats')
+Route::post('/player/{uuid}/{name}/add-statistic', [PlayerController::class, 'processAddStatistic'])
+    ->name('post-add-statistic')
     /*->middleware('auth')*/;
 
 // require __DIR__.'auth.php';
