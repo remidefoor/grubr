@@ -8,12 +8,17 @@ use Illuminate\Http\Request;
 
 class PlayerController extends Controller
 {
+    function getUser(Request $request) {
+        $uuid = $request->parameter('uuid');
+        return User::find($uuid);
+    }
+
     function getPlayersView() {
         return view('pages.players', ['users' => User::all()]);
     }
 
     function getPlayerView($uuid, $name) {
-        
+        //
     }
 
     function getPlayerEditView($uuid, $name) {
@@ -26,14 +31,14 @@ class PlayerController extends Controller
     }
 
     function processPlayerEdit(Request $request) {
-
+        //
     }
 
     function getAddGameStatsView($uuid, $name) {
-
+        return view('pages.add-statistic', ['opponentClubs' => Club::all()]);  // filter out own club
     }
 
     function processAddGameStats(Request $request) {
-
+        //
     }
 }

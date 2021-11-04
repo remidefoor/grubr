@@ -1,10 +1,18 @@
 @extends('layouts.master')
 
 @section('main')
-    <form method="POST" action="">  <!-- TODO add parameter with route -->
+    <form method="POST" action="" enctype="multipart/form-data">  <!-- TODO add parameter with route -->
         @csrf
+        <img src="" alt="profile picture" title="profile picture" />  <!-- display uploaded profile picture -->
+        <input type="file" id="profile-picture" name="profile-picture" />
+
         <label for="email">Email address</label>
         <input type="email" id="email" name="email" required />
+
+        @guest
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+        @endguest
 
         <label for="first-name">First name</label>
         <input type="text" id="first-name" name="last-name" required />
