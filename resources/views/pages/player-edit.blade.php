@@ -24,7 +24,7 @@
         <input id='club' name='club' list='clubs' required />
         <datalist id='clubs' name='clubs'>
             @for ($i = 0; $i < count($clubs); $i++)
-                <option value={{$clubs[$i]->name}} />
+                <option value={{$clubs[$i]->name}} />  <!-- TODO optgroup per country -->
             @endfor
         </datalist>
 
