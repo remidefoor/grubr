@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PlayerController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,5 +29,18 @@ Route::get('/player/{uuid}/{name}/add-statistic', [PlayerController::class, 'get
 Route::post('/player/{uuid}/{name}/add-statistic', [PlayerController::class, 'processAddStatistic'])
     ->name('post-add-statistic')
     /*->middleware('auth')*/;
+
+// auth
+Route::get('/register', [AuthController::class, 'getRegisterView'])
+    ->name('get-register');
+
+Route::post('/register', [AuthController::class, 'processRegister'])
+    ->name('post-register');
+
+Route::get('/loging', [AuthController::class, 'getLoginView'])
+    ->name('get-login');
+
+Route::post('/login', [AuthController::class, 'processLogin'])
+    ->name('post-login');
 
 // require __DIR__.'auth.php';
