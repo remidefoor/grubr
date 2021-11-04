@@ -8,11 +8,6 @@ use Illuminate\Http\Request;
 
 class PlayerController extends Controller
 {
-    function getUser(Request $request) {
-        $uuid = $request->parameter('uuid');
-        return User::find($uuid);
-    }
-
     function getPlayersView() {
         return view('pages.players', ['users' => User::all()]);
     }
@@ -26,7 +21,7 @@ class PlayerController extends Controller
             'genders' => User::getEnumValues('gender'),
             'dominantHandValues' => User::getEnumValues('dominant_hand'),
             'positions' => User::getEnumValues('position'),
-            'clubs' => Club::all()
+            'clubs' => Club::all()->sort('name')
         ]);
     }
 
@@ -35,7 +30,8 @@ class PlayerController extends Controller
     }
 
     function getAddGameStatsView($uuid, $name) {
-        return view('pages.add-statistic', ['opponentClubs' => Club::all()]);  // filter out own club
+        $clubId = User::find($uuid)->club->id;
+        return view('pages.add-statistic', ['opponentClubs' => Club::where('id', '!=', $clubId)]);  // filter out own club
     }
 
     function processAddGameStats(Request $request) {

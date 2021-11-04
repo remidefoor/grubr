@@ -11,7 +11,7 @@ class AuthController extends Controller
     function getRegisterView() {
         return view('pages.player-edit', [
             'genders' => User::getEnumValues('gender'),
-            'clubs' => Club::all(),
+            'clubs' => Club::all()->sort('name'),
             'dominantHandValues' => User::getEnumValues('dominant_hand'),
             'positions' => User::getEnumValues('position')
         ]);
