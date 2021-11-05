@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class PlayerController extends Controller
 {
     function getPlayersView() {
-        return view('pages.players', ['users' => User::all()]);
+        return view('pages.players', ['players' => User::all()]);
     }
 
     function getPlayerView($uuid, $name) {

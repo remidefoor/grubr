@@ -19,7 +19,7 @@
                 <a href="">register</a>  <!-- TODO add route name -->
             @else
                 <a href="">my profile</a>  <!-- TODO add parameter with route -->
-                <a href="">sign out</a>  <!-- TODO add route name -->
+                <a href="">logout</a>  <!-- TODO add route name -->
             @endguest
         </nav>
     </header>

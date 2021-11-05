@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\PlayerController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,16 +31,20 @@ Route::post('/player/{uuid}/{firstName}-{lastName}/add-statistic', [PlayerContro
     /*->middleware('auth')*/;
 
 // auth
-Route::get('/register', [AuthController::class, 'getRegisterView'])
-    ->name('get-register');
-
-Route::post('/register', [AuthController::class, 'processRegister'])
-    ->name('post-register');
-
-Route::get('/login', [AuthController::class, 'getLoginView'])
+Route::get('/login', [CustomAuthController::class, 'getLoginView'])
     ->name('get-login');
 
-Route::post('/login', [AuthController::class, 'processLogin'])
+Route::post('/login', [CustomAuthController::class, 'processLogin'])
     ->name('post-login');
+
+Route::get('/register', [CustomAuthController::class, 'getRegisterView'])
+    ->name('get-register');
+
+Route::post('/register', [CustomAuthController::class, 'processRegister'])
+    ->name('post-register');
+
+Route::get('/logout', [CustomAuthController::class, 'processLogout'])
+    ->name('get-logout')
+    ->middleware('auth');
 
 // require __DIR__.'auth.php';
