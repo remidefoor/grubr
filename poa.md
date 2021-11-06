@@ -5,6 +5,10 @@
 - players
     - filtering
     - paging
+- login
+    - redirect when authenticated
+- register
+    - redirect when authenticated
 
 ## validation
 - client side

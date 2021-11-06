@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Club;
 use Illuminate\Http\Request;
-use Hash;
-use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rule;
 
 class CustomAuthController extends Controller
 {
@@ -15,10 +17,14 @@ class CustomAuthController extends Controller
     {
         return view('auth.login');
     }  
-      
 
     public function processLogin(Request $request)
     {
+        $validationRules = [
+            'email' => ['required', 'email'],
+            'password' => ['required', 'string']
+        ];
+
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -33,16 +39,33 @@ class CustomAuthController extends Controller
         return redirect("login")->withSuccess('Login details are not valid');
     }
 
-
-
-    public function registration()
+    public function getRegisterView()
     {
-        return view('auth.registration');
-    }
-      
+        return view('pages.player-edit', [
+            'genders' => User::getEnumValues('gender'),
+            'clubs' => Club::all()->sort('name'),
+            'dominantHandValues' => User::getEnumValues('dominant_hand'),
+            'positions' => User::getEnumValues('position')
+        ]);
+    }  
 
     public function customRegistration(Request $request)
     {  
+        $validationRules = [
+            'profile-picture' => ['image', 'nullable'],
+            'email' => ['required', 'email', 'unique:App\Models\User'],
+            'password' => ['required', 'string'],
+            'last-name' => ['required', 'string'],
+            'first-name' => ['required', 'string'],
+            'gender' => ['required', 'string', Rule::in(User::getEnumValues('gender'))],
+            'birth-date' => ['required', 'date', 'before:today'],
+            'club' => ['required', 'string', Rule::in(Club::pluck('name'))],
+            'dominant-hand' => ['required', 'string', Rule::in(User::getEnumValues('dominant_hand'))],
+            'position' => ['required', 'string', Rule::in(User::getEnumValues('position'))],
+            'height' => ['required','digits:3', 'min:0.01'],
+            'weight' => ['required', 'digits_between:2,4', 'min:0.01']
+        ];
+
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
@@ -55,7 +78,6 @@ class CustomAuthController extends Controller
         return redirect("dashboard")->withSuccess('You have signed-in');
     }
 
-
     public function create(array $data)
     {
       return User::create([
@@ -63,18 +85,7 @@ class CustomAuthController extends Controller
         'email' => $data['email'],
         'password' => Hash::make($data['password'])
       ]);
-    }    
-    
-
-    public function dashboard()
-    {
-        if(Auth::check()){
-            return view('dashboard');
-        }
-  
-        return redirect("login")->withSuccess('You are not allowed to access');
     }
-    
 
     public function signOut() {
         Session::flush();
