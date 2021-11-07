@@ -1,0 +1,26 @@
+$purple: #a259ff;
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+        p {
+            display: inline-block;
+        }
+        
+        a {
+            display: inline-block;
+            color: $purple;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }    
+    }
+}
+
+form {
+    margin-bottom: 1rem;
+}

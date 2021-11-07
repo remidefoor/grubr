@@ -1,0 +1,19 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main div p {
+  display: inline-block;
+}
+main div a {
+  display: inline-block;
+  color: #a259ff;
+}
+main div a:hover {
+  text-decoration: underline;
+}
+
+form {
+  margin-bottom: 1rem;
+}

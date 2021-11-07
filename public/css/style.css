@@ -7,8 +7,35 @@ a {
   text-decoration: none;
 }
 
-label, input {
+label {
+  display: none;
+}
+
+input {
   display: block;
+  box-sizing: border-box;
+  height: 2rem;
+  width: 100%;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #000000;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+input[type=submit] {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+input:focus {
+  border-color: #a259ff;
+  outline: none;
+}
+
+input[type=submit]:focus {
+  border-color: #000000;
 }
 
 header nav {
@@ -37,5 +64,5 @@ footer {
   margin-top: 3rem;
 }
 footer p {
-  margin-left: 3rem;
+  margin-left: 2.5rem;
 }
