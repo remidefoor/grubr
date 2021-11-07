@@ -16,9 +16,9 @@ class CreateStatisticsTable extends Migration
     {
         Schema::create('statistics', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->index();
-            $table->uuid('player_uuid')->index();
-            $table->foreign('player_uuid')->references('uuid')->on('users');
-            $table->primary(['id', 'player_uuid']);
+            $table->uuid('user_uuid')->index();
+            $table->foreign('user_uuid')->references('uuid')->on('users');
+            $table->primary(['id', 'user_uuid']);
             $table->date('date');
             $table->unsignedBigInteger('opponent_club_id');
             $table->foreign('opponent_club_id')->references('id')->on('clubs');

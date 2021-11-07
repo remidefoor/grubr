@@ -19,8 +19,8 @@ class Club extends Model
         return $this->hasMany(Statistic::class, 'opponent_club_id');
     }
 
-    public static function getOpponentClubs($user_uuid) {
-        $user = User::find($user_uuid);
+    public static function getOpponentClubs($uuid) {
+        $user = User::find($uuid);
         return $user->club->name;
     }
 }
