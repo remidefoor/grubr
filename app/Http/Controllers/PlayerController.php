@@ -27,7 +27,7 @@ class PlayerController extends Controller
         ]);
     }
 
-    public function processPlayerEdit(Request $request, $uuid, $firstName, $lastName) {
+    private function validatePlayer(Request $request) {
         $validationRules = [
             'profile-picture' => ['image', 'nullable'],
             'email' => ['required', 'email', 'unique:App\Models\User'],
@@ -41,13 +41,43 @@ class PlayerController extends Controller
             'height' => ['required','digits:3', 'min:0.01'],
             'weight' => ['required', 'digits_between:2,4', 'min:0.01']
         ];
+
+        return $request->validate($validationRules);
+    }
+
+    private function editPlayer($data, $uuid) {
+        $player = User::find($uuid);
+
+        $player->last_name = $data['last-name'];
+        $player->first_name = $data['first-name'];
+        $player->gender = $data['gender'];
+        $player->data = $data['date'];
+        $player->email = $data['email'];
+        $player->dominant_hand = $data['dominant-hand'];
+        $player->position = $data['position'];
+        $player->height = $data['height'];
+        $player->weight = $data['weight'];
+        $player->club_id = Club::where('name', '=', $data['club'])->value('id');
+
+        $player->save();
+    }
+
+    public function processPlayerEdit(Request $request, $uuid, $firstName, $lastName) {
+        $data = editPlayer($request);
+        editPlayer($data, $uuid);
+
+        return redirect()->route('get-player', [
+            'uuid' => $uuid,
+            'firstName' => $firstName,
+            'lastName' => $lastName
+        ]);
     }
 
     public function getAddStatisticView($uuid, $firstName, $lastName) {
         return view('pages.add-statistic', ['opponentClubs' => Club::getOpponentClubs($uuid)]);
     }
 
-    public function validateStatistic(Request $request, $uuid) {
+    private function validateStatistic(Request $request, $uuid) {
         $validationRules = [
             'date' => ['required', 'date', 'before_or_equal:today'],
             'opponent-club' => ['required', 'string', Rule::in(Club::getOpponentClubs($uuid))],
@@ -61,7 +91,7 @@ class PlayerController extends Controller
         return $request->validate($validationRules);
     }
 
-    public function createStatistic($uuid, $data) {
+    private function createStatistic($uuid, $data) {
         Statistic::create([
             'user_uuid' => $uuid,
             'date' => $data['date'],
