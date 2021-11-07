@@ -9,10 +9,15 @@
     - redirect when authenticated
 - register
     - redirect when authenticated
+    - date validation
+    - placeholders
+- add-statistic
+    - date validation
+    - max seven meter throws validation
 
 ## validation
-- client side
-- server side
+- ~~client side~~
+- ~~server side~~
 
 ## auth
 

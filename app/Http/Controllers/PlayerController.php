@@ -22,7 +22,7 @@ class PlayerController extends Controller
             'genders' => User::getEnumValues('gender'),
             'dominantHandValues' => User::getEnumValues('dominant_hand'),
             'positions' => User::getEnumValues('position'),
-            'clubs' => Club::all()->sort('name')
+            'clubs' => Club::all()
         ]);
     }
 
@@ -54,7 +54,7 @@ class PlayerController extends Controller
             'team-goals' => ['required', 'integer', 'min:0'],
             'opponent-goals' => ['required', 'integer', 'min:0'],
             'personal-goals' => ['required', 'integer', 'min:0'],
-            'seven-meter-throws' => ['required', 'integer', 'min:0'],
+            'seven-meter-throws' => ['required', 'integer', 'min:0', 'lte:personal-goals'],
             'played-minutes' => ['required', 'integer', 'between:0,60']
         ];
     }

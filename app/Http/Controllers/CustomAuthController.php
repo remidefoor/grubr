@@ -43,7 +43,7 @@ class CustomAuthController extends Controller
     {
         return view('pages.player-edit', [
             'genders' => User::getEnumValues('gender'),
-            'clubs' => Club::all()->sort('name'),
+            'clubs' => Club::all(),
             'dominantHandValues' => User::getEnumValues('dominant_hand'),
             'positions' => User::getEnumValues('position')
         ]);

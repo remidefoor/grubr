@@ -5,22 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>scout.me</title>
-    <!-- <link rel="stylesheet" type="text/css" href="{{asset("css/reset.css")}}"/> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />  <!-- TODO read -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />  <!-- TODO read -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" />  <!-- TODO read -->
+    <link rel="stylesheet" type="text/css" href="{{asset("css/reset.css")}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset("css/style.css")}}"/>
     @yield('headInfo')
 </head>
 <body>
     <header>
         <nav>
-            <a href={{route("get-players")}}>players</a>
-
-            @guest
-                <a href="">login</a>  <!-- TODO add route -->
-                <a href="">register</a>  <!-- TODO add route name -->
-            @else
-                <a href="">my profile</a>  <!-- TODO add parameter with route -->
-                <a href="">logout</a>  <!-- TODO add route name -->
-            @endguest
+            <div>
+                <a href="{{route("get-players")}}">players</a>
+                @auth
+                    <a href="">my profile</a>  <!-- TODO add parameter with route -->
+                @endauth
+            </div>
+            <div>
+                @guest
+                    <a href="{{route('get-login')}}">log in</a>
+                    <a id="register" href="">register</a>  <!-- TODO add parameter with route -->
+                @else
+                    <a href="{{route('get-logout')}}">log out</a>
+                @endguest
+            </div>
         </nav>
     </header>
 
