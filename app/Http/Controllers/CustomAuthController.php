@@ -13,44 +13,43 @@ use Illuminate\Validation\Rule;
 class CustomAuthController extends Controller
 {
 
-    public function getLoginView()
-    {
+    public function getLoginView() {
         return view('auth.login');
-    }  
+    }
 
-    public function processLogin(Request $request)
-    {
+    private function validateCredentials(Request $request) {
         $validationRules = [
             'email' => ['required', 'email'],
             'password' => ['required', 'string']
         ];
 
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        return $request->validate($validationRules);
+    }
+
+    public function processLogIn(Request $request) {
+        $data = $this->validateCredentials($request);
    
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
-                        ->withSuccess('Signed in');
+            return redirect()->route('get-player', [
+                'uuid' => Auth::user()->uuid,
+                'firstName' => Auth::user()->first_name,
+                'lastName' => Auth::user()->last_name
+            ]);
         }
-  
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect()->back();
     }
 
-    public function getRegisterView()
-    {
-        return view('pages.player-edit', [
+    public function getRegisterView() {
+        return view('auth.register', [
             'genders' => User::getEnumValues('gender'),
             'clubs' => Club::all(),
             'dominantHandValues' => User::getEnumValues('dominant_hand'),
             'positions' => User::getEnumValues('position')
         ]);
-    }  
+    }
 
-    public function customRegistration(Request $request)
-    {  
+    private function validatePlayer(Request $request) {
         $validationRules = [
             'profile-picture' => ['image', 'nullable'],
             'email' => ['required', 'email', 'unique:App\Models\User'],
@@ -66,31 +65,41 @@ class CustomAuthController extends Controller
             'weight' => ['required', 'digits_between:2,4', 'min:0.01']
         ];
 
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-        ]);
-           
-        $data = $request->all();
-        $check = $this->create($data);
-         
-        return redirect("dashboard")->withSuccess('You have signed-in');
+        return $request->validate();
     }
 
-    public function create(array $data)
-    {
+    public function createPlayer($data) {
       return User::create([
-        'name' => $data['name'],
+        'uuid' => $data['uuid'],
+        'last_name' => $data['last-name'],
+        'first_name' => $data['first-name'],
+        'gender' => $data['gender'],
+        'date' => $data['date'],
         'email' => $data['email'],
+        'dominant_hand' => $data['dominant-hand'],
+        'position' => $data['position'],
+        'height' => $data['height'],
+        'weight' => $data['weight'],
+        'club_id' => Club::where('name', '=', $data['club'])->value('id'),
         'password' => Hash::make($data['password'])
       ]);
     }
 
-    public function signOut() {
+    public function processRegister(Request $request) {           
+        $data = $this->validatePlayer($request);
+        $player = $this->createPlayer($data);
+         
+        return redirect()->route('get-player', [
+            'uuid' => $player->uuid,
+            'firstName' => $player->first_name,
+            'lastName' => $player->last_name
+        ]);
+    }
+
+    public function processLogOut() {
         Session::flush();
         Auth::logout();
   
-        return Redirect('login');
+        return Redirect()->route('auth.login');
     }
 }

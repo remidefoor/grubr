@@ -19,11 +19,12 @@ class PlayerController extends Controller
     }
 
     public function getPlayerEditView($uuid, $firstName, $lastName) {
-        return view('pages.player-detail', [
+        return view('pages.player-edit', [
+            'players' => User::find($uuid),
             'genders' => User::getEnumValues('gender'),
+            'clubs' => Club::all(),
             'dominantHandValues' => User::getEnumValues('dominant_hand'),
-            'positions' => User::getEnumValues('position'),
-            'clubs' => Club::all()
+            'positions' => User::getEnumValues('position')
         ]);
     }
 
@@ -63,8 +64,8 @@ class PlayerController extends Controller
     }
 
     public function processPlayerEdit(Request $request, $uuid, $firstName, $lastName) {
-        $data = editPlayer($request);
-        editPlayer($data, $uuid);
+        $data = $this->validatePlayer($request);
+        $this->editPlayer($data, $uuid);
 
         return redirect()->route('get-player', [
             'uuid' => $uuid,
@@ -105,8 +106,8 @@ class PlayerController extends Controller
     }
 
     public function processAddStatistic(Request $request, $uuid, $firstName, $lastName) {
-        $data = validateStatistic($request);
-        createStatistic($uuid, $data);
+        $data = $this->validateStatistic($request, $uuid);
+        $this->createStatistic($uuid, $data);
 
         return redirect()->route('get-player', [
             'uuid' => $uuid,

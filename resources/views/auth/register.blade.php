@@ -4,7 +4,7 @@
 <form method="POST" action="{{route('post-register')}}" enctype="multipart/form-data">
         @csrf
         <img src="" alt="profile picture" title="profile picture" />  <!-- TODO display uploaded profile picture -->
-        <input type="file" id="profile-picture" name="profile-picture" accept="image/*" autofocus capture="image/*" {{old('profile-picture')}} />
+        <input type="file" id="profile-picture" name="profile-picture" accept="image/*" capture="image/*" {{old('profile-picture')}} />
 
         <label for="email">Email address</label>
         <input type="email" id="email" name="email" required placeholder="Email address" {{old('email')}} />

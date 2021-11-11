@@ -34,7 +34,7 @@ Route::post('/player/{uuid}/{firstName}-{lastName}/add-statistic', [PlayerContro
 Route::get('/login', [CustomAuthController::class, 'getLoginView'])
     ->name('get-login');
 
-Route::post('/login', [CustomAuthController::class, 'processLogin'])
+Route::post('/login', [CustomAuthController::class, 'processLogIn'])
     ->name('post-login');
 
 Route::get('/register', [CustomAuthController::class, 'getRegisterView'])
@@ -43,7 +43,7 @@ Route::get('/register', [CustomAuthController::class, 'getRegisterView'])
 Route::post('/register', [CustomAuthController::class, 'processRegister'])
     ->name('post-register');
 
-Route::get('/logout', [CustomAuthController::class, 'processLogout'])
+Route::get('/logout', [CustomAuthController::class, 'processLogOut'])
     ->name('get-logout')
     ->middleware('auth');
 
