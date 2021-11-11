@@ -18,13 +18,13 @@
             <div>
                 <a href="{{route("get-players")}}">players</a>
                 @auth
-                    <a href="">my profile</a>  <!-- TODO add parameter with route -->
+                    <a href="">my profile</a>  <!-- TODO add route -->
                 @endauth
             </div>
             <div>
                 @guest
                     <a href="{{route('get-login')}}">log in</a>
-                    <a id="register" href="">register</a>  <!-- TODO add parameter with route -->
+                    <a id="register" href="{{route('get-register')}}">register</a>
                 @else
                     <a href="{{route('get-logout')}}">log out</a>
                 @endguest
