@@ -1,0 +1,23 @@
+$players-font-stack: 'JetBrains Mono', monospace;
+
+#players {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5rem;
+}
+
+img {
+    display: block;
+    max-width: 10rem;
+    height: auto;
+    border: 4px solid #000000;
+    border-radius: 50%;
+    outline: 6px solid #0acf83;
+    margin: auto;
+}
+
+h1, h2 {
+    font-family: $players-font-stack;
+    text-align: center;
+}

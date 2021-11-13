@@ -65,7 +65,7 @@ class CustomAuthController extends Controller
             'weight' => ['required', 'digits_between:2,4', 'min:0.01']
         ];
 
-        return $request->validate();
+        return $request->validate($validationRules);
     }
 
     public function createPlayer($data) {

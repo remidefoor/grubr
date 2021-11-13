@@ -16,7 +16,7 @@
         <input type="text" id="last-name" name="last-name" required  placeholder="Last name" value="{{$player->last_name}}" {{old('first-name')}} />
 
         @foreach ($genders as $gender)
-            <label for="{{$gender}}">{{$gender}}</label>
+            <label class="permanent" for="{{$gender}}">{{$gender}}</label>
             @if ($player->gender == $gender)
                 <input type="radio" id={{$gender}} name="gender" required selected="selected" {{old('gender')}} />
             @else
@@ -35,7 +35,7 @@
             @endfor
         </datalist>
 
-        <label for="dominant-hand">Dominant hand</label>
+        <label class="permanent" for="dominant-hand">Dominant hand</label>
         <select id="dominant-hand" name="dominant-hand" {{old('dominant-hand')}}>
             @foreach ($dominantHandValues as $dominantHandValue)
                 @if ($player->dominant_hand == $dominantHandValue)
@@ -46,7 +46,7 @@
             @endforeach
         </select>
 
-        <label for="position">Position</label>
+        <label class="permanent" for="position">Position</label>
         <select id="position" name="position" {{old('position')}}>
             @foreach ($positions as $position)
                 @if ($player->position == $position)

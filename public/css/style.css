@@ -11,6 +11,10 @@ label {
   display: none;
 }
 
+label.permanent {
+  display: block;
+}
+
 input {
   display: block;
   box-sizing: border-box;
@@ -57,11 +61,15 @@ header nav #register {
   border-radius: 10px;
 }
 
+main {
+  margin: 0 3rem;
+}
+
 footer {
   background-color: #000000;
   color: #ffffff;
   padding: 1.5rem 0;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
 }
 footer p {
   margin-left: 3rem;

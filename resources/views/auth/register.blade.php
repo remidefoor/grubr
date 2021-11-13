@@ -1,6 +1,14 @@
 @extends('layouts.master')
 
 @section('main')
+@if ($errors -> any())    
+    <ul>
+            @foreach ($errors -> all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+    </ul>
+@endif
+
 <form method="POST" action="{{route('post-register')}}" enctype="multipart/form-data">
         @csrf
         <img src="" alt="profile picture" title="profile picture" />  <!-- TODO display uploaded profile picture -->
@@ -19,7 +27,7 @@
         <input type="text" id="last-name" name="last-name" required  placeholder="Last name" {{old('first-name')}} />
 
         @foreach ($genders as $gender)
-            <label for="{{$gender}}">{{$gender}}</label>    
+            <label class="permanent" for="{{$gender}}">{{$gender}}</label>    
             <input type="radio" id={{$gender}} name="gender" required {{old('gender')}} />
         @endforeach
 
@@ -34,14 +42,14 @@
             @endfor
         </datalist>
 
-        <label for="dominant-hand">Dominant hand</label>
+        <label class="permanent" for="dominant-hand">Dominant hand</label>
         <select id="dominant-hand" name="dominant-hand" {{old('dominant-hand')}}>
             @foreach ($dominantHandValues as $dominantHandValue)
                 <option value={{$dominantHandValue}}>{{$dominantHandValue}}</option>
             @endforeach
         </select>
 
-        <label for="position">Position</label>
+        <label class="permanent" for="position">Position</label>
         <select id="position" name="position" {{old('position')}}>
             @foreach ($positions as $position)
                 <option value={{$position}}>{{$position}}</option>
