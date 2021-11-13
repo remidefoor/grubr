@@ -17,7 +17,7 @@ class CreateStatisticsTable extends Migration
         Schema::create('statistics', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->index();
             $table->uuid('user_uuid')->index();
-            $table->foreign('user_uuid')->references('uuid')->on('users');
+            $table->foreign('user_uuid')->references('uuid')->on('users')->onDelete('cascade');
             $table->primary(['id', 'user_uuid']);
             $table->date('date');
             $table->unsignedBigInteger('opponent_club_id');
@@ -27,7 +27,8 @@ class CreateStatisticsTable extends Migration
             $table->integer('personal_goals');
             $table->integer('seven_meter_throws');
             $table->integer('played_minutes');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
 
         DB::statement('ALTER TABLE statistics CHANGE id id BIGINT(20) AUTO_INCREMENT NOT NULL UNIQUE');

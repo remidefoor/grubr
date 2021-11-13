@@ -18,7 +18,8 @@ class CreateClubsTable extends Migration
             $table->string('name')->unique();
             $table->string('country');
             $table->string('city');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 
