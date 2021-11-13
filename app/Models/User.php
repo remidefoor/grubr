@@ -16,6 +16,20 @@ class User extends Authenticatable
     // TODO refine model
 
     /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'uuid';
+
+    /**
+     * Indicates if the model's ID is auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var string[]
@@ -44,6 +58,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
 
     public function club() {
         return $this->belongsTo(Club::class);
@@ -53,7 +68,7 @@ class User extends Authenticatable
         return $this->hasMany(Statistic::class);
     }
 
-    public static function getEnumValues($columnName) {  // TODO validate
+    public static function getEnumValues($columnName) {  // TODO read
         $arr = DB::select(DB::raw('SHOW COLUMNS FROM users WHERE Field = "'.$columnName.'"'));
         if (count($arr) == 0){
             return array();
