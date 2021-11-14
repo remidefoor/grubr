@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('headInfo')
-    <link rel="stylesheet" type="text/css" href="{{asset('css/login.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/auth/login.css')}}">
 @endsection
 
 @section('main')

@@ -1,5 +1,5 @@
 {
-    "/css/login.css": "/css/login.css",
-    "/css/players.css": "/css/players.css",
+    "/css/auth/login.css": "/css/auth/login.css",
+    "/css/players/players.css": "/css/players/players.css",
     "/css/style.css": "/css/style.css"
 }
