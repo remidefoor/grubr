@@ -11,22 +11,22 @@ Route::get('/', function () {
 Route::get('/players', [PlayerController::class, 'getPlayersView'])
     ->name('get-players');
 
-Route::get('/player/{uuid}/{firstName}-{lastName}', [PlayerController::class, 'getPlayerView'])
+Route::get('/players/{uuid}/{firstName}-{lastName}', [PlayerController::class, 'getPlayerView'])
     ->name('get-player');
 
-Route::get('/player/{uuid}/{firstName}-{lastName}/edit', [PlayerController::class, 'getPlayerEditView'])
+Route::get('/players/{uuid}/{firstName}-{lastName}/edit', [PlayerController::class, 'getPlayerEditView'])
     ->name('get-player-edit')
     /*->middleware('auth')*/;
 
-Route::post('/player/{uuid}/{firstName}-{lastName}/edit', [PlayerController::class, 'processPlayerEdit'])
+Route::post('/players/{uuid}/{firstName}-{lastName}/edit', [PlayerController::class, 'processPlayerEdit'])
     ->name('post-player-edit')
     /*->middleware('auth')*/;
 
-Route::get('/player/{uuid}/{firstName}-{lastName}/add-statistic', [PlayerController::class, 'getAddStatisticView'])
+Route::get('/players/{uuid}/{firstName}-{lastName}/add-statistic', [PlayerController::class, 'getAddStatisticView'])
     ->name('get-add-statistic')
     /*->middleware('auth')*/;
 
-Route::post('/player/{uuid}/{firstName}-{lastName}/add-statistic', [PlayerController::class, 'processAddStatistic'])
+Route::post('/players/{uuid}/{firstName}-{lastName}/add-statistic', [PlayerController::class, 'processAddStatistic'])
     ->name('post-add-statistic')
     /*->middleware('auth')*/;
 

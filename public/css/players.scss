@@ -1,23 +1,43 @@
 $players-font-stack: 'JetBrains Mono', monospace;
+$black: #000000;
 
 #players {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 5rem;
+}
+
+.player {
+    padding: 4rem;
+}
+
+.player:hover {
+    border-radius: 10px;
+    box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 img {
     display: block;
     max-width: 10rem;
     height: auto;
-    border: 4px solid #000000;
+    border: 4px solid $black;
     border-radius: 50%;
-    outline: 6px solid #0acf83;
+    outline: 6px solid transparent;
     margin: auto;
 }
 
 h1, h2 {
     font-family: $players-font-stack;
     text-align: center;
+}
+
+h1 {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+h2 {
+    margin-top: 0.2rem;
 }
