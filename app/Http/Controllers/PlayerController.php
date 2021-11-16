@@ -15,7 +15,9 @@ class PlayerController extends Controller
     }
 
     public function getPlayerView($uuid, $firstName, $lastName) {
-        //
+        return view('pages.player', [
+            "player" => User::find($uuid)
+        ]);
     }
 
     public function getPlayerEditView($uuid, $firstName, $lastName) {
