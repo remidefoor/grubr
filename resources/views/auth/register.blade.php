@@ -11,7 +11,7 @@
 
     <form method="POST" action="{{route('post-register')}}" enctype="multipart/form-data">
         @csrf
-        <img src="" alt="profile picture" title="profile picture" />  <!-- TODO display uploaded profile picture -->
+        <img src="{{asset('media/profile-pictures/default.png')}}" alt="profile picture" title="profile picture" />  <!-- TODO crop & display uploaded profile picture -->
         <input type="file" id="profile-picture" name="profile-picture" accept="image/*" capture="image/*" {{old('profile-picture')}} />
 
         <label for="email">Email address</label>

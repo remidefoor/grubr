@@ -8,7 +8,7 @@
             <h1>Hi, {{$player->first_name}} {{$player->last_name}}!</h1>
         @endguest
         <div class="flexbox">
-            <img src="" alt="Profile picture." title="Profile picture." />  <!-- TODO add img src -->
+            <img src="{{$profilePictureUrl}}" alt="Profile picture." title="Profile picture." />
             <div id="player-details">
                 <p>
                     <em>Gender:</em>
@@ -40,9 +40,11 @@
                 </p>
             </div>
         </div>
-        @guest
+        @if (Auth::id() == $player->uuid)
+            <a href="{{route('get-add-statistic', ['uuid' => $player->uuid, 'firstName' => $player->first_name, 'lastName' => $player->last_name])}}">Add statistic</a>
         @else
-        @endguest
+            <a href="mailto:{{$player->email}}">Get in touch</a>
+        @endif
     </section>
 
     <section id="statistics">

@@ -10,7 +10,7 @@
         <input type="text" id="opponent-club" name="opponent-club" required list="opponent-clubs" placeholder="Opponent" {{old('opponent-club')}} />  <!-- TODO no input possible -->
         <datalist id="opponent-clubs">
             @for ($i = 0; $i < count($opponentClubs); $i++)
-            <option value={{$opponentClub}} />
+                <option value="{{$opponentClubs[$i]->name}}" />
             @endfor
         </datalist>
 

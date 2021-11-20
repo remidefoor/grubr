@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Club;
 use Illuminate\Http\Request;
 use App\Models\User;
+use GdImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -69,7 +70,7 @@ class CustomAuthController extends Controller
         return $request->validate($validationRules);
     }
 
-    public function createPlayer($data) {
+    private function createPlayer($data) {
       return User::create([
         'uuid' => Str::uuid()->toString(),
         'last_name' => $data['last-name'],
@@ -86,9 +87,14 @@ class CustomAuthController extends Controller
       ]);
     }
 
+    private function storeProfilePicture(Request $request, $uuid) {
+        $request->file('profile-picture')->storeAs('profile-pictures', $uuid);
+    }
+
     public function processRegister(Request $request) {           
         $data = $this->validatePlayer($request);
         $player = $this->createPlayer($data);
+        $this->storeProfilePicture($request, $player->uuid);
 
         Auth::login($player);
          

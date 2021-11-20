@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
 @section('main')
-    <form method="POST" action="{{route('post-player-edit', ['uuid' => $players->uuid, 'firstName' => $player->first_name, 'lastName' => $players->last_name])}}" enctype="multipart/form-data">  <!-- TODO add parameter with route -->
+    <form method="POST" action="{{route('post-player-edit', ['uuid' => $player->uuid, 'firstName' => $player->first_name, 'lastName' => $player->last_name])}}" enctype="multipart/form-data">  <!-- TODO add parameter with route -->
         @csrf
-        <img src="" alt="profile picture" title="profile picture" />  <!-- TODO display uploaded profile picture -->
+        <img src="{{$profilePictureUrl}}" alt="profile picture" title="profile picture" />  <!-- TODO display uploaded profile picture -->
         <input type="file" id="profile-picture" name="profile-picture" accept="image/*" capture="image/*" {{old('profile-picture')}} />
 
         <label for="email">Email address</label>

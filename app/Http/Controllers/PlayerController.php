@@ -14,17 +14,26 @@ class PlayerController extends Controller
         return view('pages.players', ['players' => User::all()]);
     }
 
+    private function getProfilePictureUrl($uuid) {
+        if (file_exists(public_path('media/profile-pictures/' . $uuid))) {
+            return asset('media/profile-pictures/' . $uuid);
+        }
+        return asset('media/profile-pictures/default.png');
+    }
+
     public function getPlayerView($uuid, $firstName, $lastName) {
         return view('pages.player', [
-            "player" => User::find($uuid)
+            'player' => User::find($uuid),
+            'profilePictureUrl' => $this->getProfilePictureUrl($uuid)
         ]);
     }
 
     public function getPlayerEditView($uuid, $firstName, $lastName) {
         return view('pages.player-edit', [
-            'players' => User::find($uuid),
+            'player' => User::find($uuid),
+            'profilePictureUrl' => $this->getProfilePictureUrl($uuid),
             'genders' => User::getEnumValues('gender'),
-            'clubs' => Club::orderBy('name')->all(),
+            'clubs' => Club::orderBy('name')->get(),
             'dominantHandValues' => User::getEnumValues('dominant_hand'),
             'positions' => User::getEnumValues('position')
         ]);
@@ -65,9 +74,14 @@ class PlayerController extends Controller
         $player->save();
     }
 
+    private function storeProfilePicture(Request $request, $uuid) {
+        $request->file('profile-picture')->storeAs('profile-pictures', $uuid);
+    }
+
     public function processPlayerEdit(Request $request, $uuid, $firstName, $lastName) {
         $data = $this->validatePlayer($request);
         $this->editPlayer($data, $uuid);
+        $this->storeProfilePicture($request, $uuid);
 
         return redirect()->route('get-player', [
             'uuid' => $uuid,
@@ -77,7 +91,7 @@ class PlayerController extends Controller
     }
 
     public function getAddStatisticView($uuid, $firstName, $lastName) {
-        return view('pages.add-statistic', ['opponentClubs' => Club::getOpponentClubs($uuid)]);
+        return view('pages.add-statistic', ['opponentClubs' => Club::getOpponentClubs($uuid)->orderBy('name')->get()]);
     }
 
     private function validateStatistic(Request $request, $uuid) {

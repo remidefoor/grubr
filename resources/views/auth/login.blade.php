@@ -15,7 +15,7 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required placeholder="Password" {{old('password')}} />
 
-            <input type="submit" id="login" name="login" value="log in" />
+            <input type="submit" id="login" name="login" value="Log in" />
         </form>
 
         <p>No account?</p>

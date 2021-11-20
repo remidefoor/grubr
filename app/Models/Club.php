@@ -21,6 +21,6 @@ class Club extends Model
 
     public static function getOpponentClubs($uuid) {
         $user = User::find($uuid);
-        return $user->club->name;
+        return Club::where('id', '!=', $user->club->id);
     }
 }
