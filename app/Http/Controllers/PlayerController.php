@@ -87,7 +87,7 @@ class PlayerController extends Controller
             'uuid' => $uuid,
             'firstName' => $firstName,
             'lastName' => $lastName
-        ]);
+        ])->withSuccess('profile updated');
     }
 
     public function getAddStatisticView($uuid, $firstName, $lastName) {
@@ -129,6 +129,6 @@ class PlayerController extends Controller
             'uuid' => $uuid,
             'firstName' => $firstName,
             'lastName' => $lastName
-    ]);
+        ])->withSuccess('statistic added');
     }
 }

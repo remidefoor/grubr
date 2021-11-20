@@ -5,6 +5,10 @@
 @endsection
 
 @section('main')
+    @if (session('success'))
+        <p id="success">{{session('success')}}</p>
+    @endif
+
     <section id="player">
         @guest
             <h1>{{$player->first_name}} {{$player->last_name}}</h1>

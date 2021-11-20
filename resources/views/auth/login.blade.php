@@ -6,6 +6,10 @@
 
 @section('main')
     <div>
+        @if ($errors->any())
+        <p id="error">{{$errors->first()}}</p>
+        @endif
+
         <form method="POST" action="{{route('post-login')}}">
             @csrf
 

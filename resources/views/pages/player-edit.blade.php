@@ -1,6 +1,14 @@
 @extends('layouts.master')
 
 @section('main')
+    @if ($errors->any())
+        <ul id="errors">
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <form method="POST" action="{{route('post-player-edit', ['uuid' => $player->uuid, 'firstName' => $player->first_name, 'lastName' => $player->last_name])}}" enctype="multipart/form-data">  <!-- TODO add parameter with route -->
         @csrf
         <img src="{{$profilePictureUrl}}" alt="profile picture" title="profile picture" />  <!-- TODO display uploaded profile picture -->

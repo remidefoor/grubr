@@ -39,7 +39,7 @@ class CustomAuthController extends Controller
                 'lastName' => Auth::user()->last_name
             ]);
         }
-        return redirect()->back();
+        return redirect()->back()->withErrors('invalid credentials');
     }
 
     public function getRegisterView() {

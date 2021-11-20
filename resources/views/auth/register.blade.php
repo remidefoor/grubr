@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('main')
-    @if ($errors -> any())    
-        <ul>
-                @foreach ($errors -> all() as $error)
-                    <li>{{$error}}</li>
-                @endforeach
-        </ul>
+    @if ($errors->any())
+    <ul id="errors">
+        @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+        @endforeach
+    </ul>
     @endif
 
     <form method="POST" action="{{route('post-register')}}" enctype="multipart/form-data">

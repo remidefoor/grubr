@@ -1,6 +1,14 @@
 @extends('layouts.master')
 
 @section('main')
+    @if ($errors->any())
+    <ul id="errors">
+        @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+        @endforeach
+    </ul>
+    @endif
+
     <form method="POST" action="">  <!-- TODO add parameter with route -->
         @csrf
         <label for="date">Date</label>
