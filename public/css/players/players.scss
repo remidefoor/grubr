@@ -8,6 +8,7 @@ $black: #000000;
 }
 
 .player {
+    width: 10rem;
     padding: 4rem;
 }
 
@@ -20,7 +21,7 @@ $black: #000000;
 
 img {
     display: block;
-    max-width: 10rem;
+    max-width: 100%;
     height: auto;
     border: 4px solid $black;
     border-radius: 50%;

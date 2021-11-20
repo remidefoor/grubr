@@ -6,7 +6,7 @@
 
 @section('main')
     <div>
-        <form action="{{route('post-login')}}">
+        <form method="POST" action="{{route('post-login')}}">
             @csrf
 
             <label for="email">Email</label>

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class CustomAuthController extends Controller
 {
@@ -43,7 +44,7 @@ class CustomAuthController extends Controller
     public function getRegisterView() {
         return view('auth.register', [
             'genders' => User::getEnumValues('gender'),
-            'clubs' => Club::all(),
+            'clubs' => Club::orderBy('name')->get(),
             'dominantHandValues' => User::getEnumValues('dominant_hand'),
             'positions' => User::getEnumValues('position')
         ]);
@@ -58,11 +59,11 @@ class CustomAuthController extends Controller
             'first-name' => ['required', 'string'],
             'gender' => ['required', 'string', Rule::in(User::getEnumValues('gender'))],
             'birth-date' => ['required', 'date', 'before:today'],
-            'club' => ['required', 'string', Rule::in(Club::pluck('name'))],
+            'club' => ['required', 'string', Rule::in(Club::pluck('name')->all())],
             'dominant-hand' => ['required', 'string', Rule::in(User::getEnumValues('dominant_hand'))],
             'position' => ['required', 'string', Rule::in(User::getEnumValues('position'))],
-            'height' => ['required','digits:3', 'min:0.01'],
-            'weight' => ['required', 'digits_between:2,4', 'min:0.01']
+            'height' => ['required','numeric', 'min:0.01'],
+            'weight' => ['required', 'numeric', 'min:0.01']
         ];
 
         return $request->validate($validationRules);
@@ -70,11 +71,11 @@ class CustomAuthController extends Controller
 
     public function createPlayer($data) {
       return User::create([
-        'uuid' => $data['uuid'],
+        'uuid' => Str::uuid()->toString(),
         'last_name' => $data['last-name'],
         'first_name' => $data['first-name'],
         'gender' => $data['gender'],
-        'date' => $data['date'],
+        'birth_date' => $data['birth-date'],
         'email' => $data['email'],
         'dominant_hand' => $data['dominant-hand'],
         'position' => $data['position'],
@@ -88,6 +89,8 @@ class CustomAuthController extends Controller
     public function processRegister(Request $request) {           
         $data = $this->validatePlayer($request);
         $player = $this->createPlayer($data);
+
+        Auth::login($player);
          
         return redirect()->route('get-player', [
             'uuid' => $player->uuid,
@@ -100,6 +103,6 @@ class CustomAuthController extends Controller
         Session::flush();
         Auth::logout();
   
-        return Redirect()->route('auth.login');
+        return redirect()->route('get-players');
     }
 }

@@ -24,7 +24,7 @@ class PlayerController extends Controller
         return view('pages.player-edit', [
             'players' => User::find($uuid),
             'genders' => User::getEnumValues('gender'),
-            'clubs' => Club::all(),
+            'clubs' => Club::orderBy('name')->all(),
             'dominantHandValues' => User::getEnumValues('dominant_hand'),
             'positions' => User::getEnumValues('position')
         ]);
@@ -38,11 +38,11 @@ class PlayerController extends Controller
             'first-name' => ['required', 'string'],
             'gender' => ['required', 'string', Rule::in(User::getEnumValues('gender'))],
             'birth-date' => ['required', 'date', 'before:today'],
-            'club' => ['required', 'string', Rule::in(Club::pluck('name'))],
+            'club' => ['required', 'string', Rule::in(Club::pluck('name')->all())],
             'dominant-hand' => ['required', 'string', Rule::in(User::getEnumValues('dominant_hand'))],
             'position' => ['required', 'string', Rule::in(User::getEnumValues('position'))],
-            'height' => ['required','digits:3', 'min:0.01'],
-            'weight' => ['required', 'digits_between:2,4', 'min:0.01']
+            'height' => ['required','numeric', 'min:0.01'],
+            'weight' => ['required', 'numeric', 'min:0.01']
         ];
 
         return $request->validate($validationRules);
@@ -54,7 +54,7 @@ class PlayerController extends Controller
         $player->last_name = $data['last-name'];
         $player->first_name = $data['first-name'];
         $player->gender = $data['gender'];
-        $player->data = $data['date'];
+        $player->birht_date = $data['birth-date'];
         $player->email = $data['email'];
         $player->dominant_hand = $data['dominant-hand'];
         $player->position = $data['position'];

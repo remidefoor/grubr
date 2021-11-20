@@ -18,9 +18,9 @@
         @foreach ($genders as $gender)
             <label class="permanent" for="{{$gender}}">{{$gender}}</label>
             @if ($player->gender == $gender)
-                <input type="radio" id={{$gender}} name="gender" required selected="selected" {{old('gender')}} />
+                <input type="radio" id={{$gender}} name="gender" required selected="selected" value="{{$gender}}" {{old('gender')}} />
             @else
-                <input type="radio" id={{$gender}} name="gender" required {{old('gender')}} />
+                <input type="radio" id={{$gender}} name="gender" required value="{{$gender}}" {{old('gender')}} />
             @endif
         @endforeach
 
@@ -31,7 +31,7 @@
         <input id="club" name="club" required list="clubs" placeholder="Club" value="{{$player->club->name}}" {{old('club')}} />  <!-- TODO no input possible -->
         <datalist id="clubs" name="clubs">
             @for ($i = 0; $i < count($clubs); $i++)
-                <option value={{$clubs[$i]->name}} />  <!-- TODO optgroup per country -->
+                <option value="{{$clubs[$i]->name}}" />  <!-- TODO optgroup per country -->
             @endfor
         </datalist>
 
@@ -41,7 +41,7 @@
                 @if ($player->dominant_hand == $dominantHandValue)
                     <option selected="selected" value={{$dominantHandValue}}>{{$dominantHandValue}}</option>
                 @else
-                    <option value={{$dominantHandValue}}>{{$dominantHandValue}}</option>
+                    <option value="{{$dominantHandValue}}">{{$dominantHandValue}}</option>
                 @endif
             @endforeach
         </select>
@@ -52,7 +52,7 @@
                 @if ($player->position == $position)
                     <option selected="selected" value={{$position}}>{{$position}}</option>
                 @else
-                    <option value={{$position}}>{{$position}}</option>
+                    <option value="{{$position}}">{{$position}}</option>
                 @endif
             @endforeach
         </select>

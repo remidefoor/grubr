@@ -18,7 +18,7 @@
             <div>
                 <a href="{{route("get-players")}}">players</a>
                 @auth
-                    <a href="">my profile</a>  <!-- TODO add route -->
+                    <a href="{{route('get-player', ['uuid' => Auth::user()->uuid, 'firstName' => Auth::user()->first_name, 'lastName' => Auth::user()->last_name])}}">my profile</a>
                 @endauth
             </div>
             <div>

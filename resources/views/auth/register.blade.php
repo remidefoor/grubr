@@ -1,15 +1,15 @@
 @extends('layouts.master')
 
 @section('main')
-@if ($errors -> any())    
-    <ul>
-            @foreach ($errors -> all() as $error)
-                <li>{{$error}}</li>
-            @endforeach
-    </ul>
-@endif
+    @if ($errors -> any())    
+        <ul>
+                @foreach ($errors -> all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+        </ul>
+    @endif
 
-<form method="POST" action="{{route('post-register')}}" enctype="multipart/form-data">
+    <form method="POST" action="{{route('post-register')}}" enctype="multipart/form-data">
         @csrf
         <img src="" alt="profile picture" title="profile picture" />  <!-- TODO display uploaded profile picture -->
         <input type="file" id="profile-picture" name="profile-picture" accept="image/*" capture="image/*" {{old('profile-picture')}} />
@@ -28,7 +28,7 @@
 
         @foreach ($genders as $gender)
             <label class="permanent" for="{{$gender}}">{{$gender}}</label>    
-            <input type="radio" id={{$gender}} name="gender" required {{old('gender')}} />
+            <input type="radio" id={{$gender}} name="gender" required value="{{$gender}}" {{old('gender')}} />
         @endforeach
 
         <label for="birth-date">Date of birth</label>
@@ -38,21 +38,21 @@
         <input id="club" name="club" required list="clubs" placeholder="Club" {{old('club')}} />  <!-- TODO no input possible -->
         <datalist id="clubs" name="clubs">
             @for ($i = 0; $i < count($clubs); $i++)
-                <option value={{$clubs[$i]->name}} />  <!-- TODO optgroup per country -->
+                <option value="{{$clubs[$i]->name}}" />  <!-- TODO optgroup per country -->
             @endfor
         </datalist>
 
         <label class="permanent" for="dominant-hand">Dominant hand</label>
         <select id="dominant-hand" name="dominant-hand" {{old('dominant-hand')}}>
             @foreach ($dominantHandValues as $dominantHandValue)
-                <option value={{$dominantHandValue}}>{{$dominantHandValue}}</option>
+                <option value="{{$dominantHandValue}}">{{$dominantHandValue}}</option>
             @endforeach
         </select>
 
         <label class="permanent" for="position">Position</label>
         <select id="position" name="position" {{old('position')}}>
             @foreach ($positions as $position)
-                <option value={{$position}}>{{$position}}</option>
+                <option value="{{$position}}">{{$position}}</option>
             @endforeach
         </select>
 

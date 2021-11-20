@@ -5,6 +5,7 @@
 }
 
 .player {
+  width: 10rem;
   padding: 4rem;
 }
 
@@ -15,7 +16,7 @@
 
 img {
   display: block;
-  max-width: 10rem;
+  max-width: 100%;
   height: auto;
   border: 4px solid #000000;
   border-radius: 50%;
