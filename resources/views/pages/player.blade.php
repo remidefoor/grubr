@@ -1,11 +1,15 @@
 @extends('layouts.master')
 
+@section('headInfo')
+    <link rel="stylesheet" type="text/css" href="{{asset('css/players/player.css')}}" />
+@endsection
+
 @section('main')
     <section id="player">
         @guest
             <h1>{{$player->first_name}} {{$player->last_name}}</h1>
         @else
-            <h1>Hi, {{$player->first_name}} {{$player->last_name}}!</h1>
+            <h1>Hi, {{$player->first_name}}</h1>
         @endguest
         <div class="flexbox">
             <img src="{{$profilePictureUrl}}" alt="Profile picture." title="Profile picture." />
@@ -41,7 +45,10 @@
             </div>
         </div>
         @if (Auth::id() == $player->uuid)
-            <a href="{{route('get-add-statistic', ['uuid' => $player->uuid, 'firstName' => $player->first_name, 'lastName' => $player->last_name])}}">Add statistic</a>
+            <div id="player-controls">
+                <a href="{{route('get-add-statistic', ['uuid' => $player->uuid, 'firstName' => $player->first_name, 'lastName' => $player->last_name])}}">Add statistic</a>
+                <a href="{{route('get-player-edit', ['uuid' => $player->uuid, 'firstName' => $player->first_name, 'lastName' => $player->last_name])}}">Edit profile</a>
+            </div>
         @else
             <a href="mailto:{{$player->email}}">Get in touch</a>
         @endif

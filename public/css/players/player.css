@@ -1,0 +1,49 @@
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+#player {
+  margin-bottom: 4rem;
+}
+#player a {
+  color: #ffffff;
+  background-color: #000000;
+  border-radius: 8px;
+  padding: 0.6rem;
+}
+
+.flexbox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-bottom: 1.5rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+#player-details {
+  font-size: 1.1rem;
+  margin-left: 1rem;
+}
+
+p {
+  margin-bottom: 0.8rem;
+}
+
+p:last-of-type {
+  margin-bottom: 0;
+}
+
+em {
+  font-weight: bold;
+}
+
+#player-controls {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
