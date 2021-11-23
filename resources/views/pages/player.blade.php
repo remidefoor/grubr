@@ -2,6 +2,9 @@
 
 @section('headInfo')
     <link rel="stylesheet" type="text/css" href="{{asset('css/players/player.css')}}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js" integrity="sha256-7lWo7cjrrponRJcS6bc8isfsPDwSKoaYfGIHgSheQkk=" crossorigin="anonymous"></script>  <!-- TODO read -->
+    <script type="module" src="{{asset('js/modules/chart-configurations.js')}}"></script>
+    <script src="{{asset('js/players/player.js')}}"></script>
 @endsection
 
 @section('main')
@@ -60,5 +63,7 @@
 
     <section id="statistics">
         <h1>Statistics</h1>
+        <div id="charts">
+        </div>
     </section>
 @endsection

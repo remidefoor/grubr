@@ -10,6 +10,8 @@ use Illuminate\Validation\Rule;
 
 class PlayerController extends Controller
 {
+    // application
+
     public function getPlayersView() {
         return view('pages.players', ['players' => User::all()]);
     }
@@ -97,7 +99,7 @@ class PlayerController extends Controller
     private function validateStatistic(Request $request, $uuid) {
         $validationRules = [
             'date' => ['required', 'date', 'before_or_equal:today'],
-            'opponent-club' => ['required', 'string', Rule::in(Club::getOpponentClubs($uuid))],
+            'opponent-club' => ['required', 'string', Rule::in(Club::getOpponentClubs($uuid)->pluck('name')->all())],
             'team-goals' => ['required', 'integer', 'min:0'],
             'opponent-goals' => ['required', 'integer', 'min:0'],
             'personal-goals' => ['required', 'integer', 'min:0'],
@@ -112,11 +114,11 @@ class PlayerController extends Controller
         Statistic::create([
             'user_uuid' => $uuid,
             'date' => $data['date'],
-            'opponent_club_id' => Club::where('name', '=', $data['opponent-club']->value('id')),
+            'opponent_club_id' => Club::where('name', '=', $data['opponent-club'])->value('id'),
             'team_goals' => $data['team-goals'],
             'opponent_goals' => $data['opponent-goals'],
             'personal_goals' => $data['personal-goals'],
-            'seven_meter_trhows' => $data['seven-meter-throws'],
+            'seven_meter_throws' => $data['seven-meter-throws'],
             'played_minutes' => $data['played-minutes']
         ]);
     }
@@ -130,5 +132,13 @@ class PlayerController extends Controller
             'firstName' => $firstName,
             'lastName' => $lastName
         ])->withSuccess('statistic added');
+    }
+
+
+    // API
+
+    public function getPlayerStatistics($uuid, $firstName, $lastName) {
+        $player = User::find($uuid);
+        return $player->statistics;
     }
 }

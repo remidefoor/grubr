@@ -3,7 +3,7 @@
 @section('headInfo')
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" />  <!-- TODO read -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/players/players.css')}}" />
-    <script src="{{asset('js/players.js')}}"></script>
+    <script src="{{asset('js/players/players.js')}}"></script>
 @endsection
 
 @section('main')
