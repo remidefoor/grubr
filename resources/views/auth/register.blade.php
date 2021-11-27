@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('headInfo')
+    <script src="{{asset('js/auth/register.js')}}"></script>
+@endsection
+
 @section('main')
     @if ($errors->any())
     <ul id="errors">
@@ -11,31 +15,44 @@
 
     <form method="POST" action="{{route('post-register')}}" enctype="multipart/form-data">
         @csrf
-        <img src="{{asset('media/profile-pictures/default.png')}}" alt="profile picture" title="profile picture" />  <!-- TODO crop & display uploaded profile picture -->
-        <input type="file" id="profile-picture" name="profile-picture" accept="image/*" capture="image/*" {{old('profile-picture')}} />
+        <div id="profile-picture">
+            <div id="video-input" class="hidden">
+                <video>Video stream not available.</video>
+            </div>
+
+            <canvas id="canvas" class="hidden">
+            </canvas>
+
+            <img id="output" src="{{asset('media/profile-pictures/default.png')}}" alt="profile picture" title="profile picture" />  <!-- TODO crop & display uploaded profile picture -->
+
+            <input type="file" id="file-input" name="file-input" accept="image/*" capture="image/*" />
+            <input type="submit" id="use-camera" name="use-camera" value="Use camera" />
+            <input type="submit" id="take-picture" name="take-picture" class="hidden" value="Take picture" />
+            <input type="submit" id="take-new-picture" name="take-new-picture" class="hidden" value="Take new picture" />
+        </div>
 
         <label for="email">Email address</label>
-        <input type="email" id="email" name="email" required placeholder="Email address" {{old('email')}} />
+        <input type="email" id="email" name="email" required placeholder="Email address" />
 
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" required placeholder="Password" {{old('password')}} />
+        <input type="password" id="password" name="password" required placeholder="Password" />
 
         <label for="first-name">First name</label>
-        <input type="text" id="first-name" name="first-name" required placeholder="First name" {{old('last-name')}} />
+        <input type="text" id="first-name" name="first-name" required placeholder="First name" />
 
         <label for="last-name">Last name</label>
-        <input type="text" id="last-name" name="last-name" required  placeholder="Last name" {{old('first-name')}} />
+        <input type="text" id="last-name" name="last-name" required  placeholder="Last name" />
 
         @foreach ($genders as $gender)
             <label class="permanent" for="{{$gender}}">{{$gender}}</label>    
-            <input type="radio" id={{$gender}} name="gender" required value="{{$gender}}" {{old('gender')}} />
+            <input type="radio" id={{$gender}} name="gender" required value="{{$gender}}" />
         @endforeach
 
         <label for="birth-date">Date of birth</label>
-        <input type="date" id="birth-date" name="birth-date" required {{old('birth-date')}} />
+        <input type="date" id="birth-date" name="birth-date" required />
 
         <label for="club">Club</label>
-        <input id="club" name="club" required list="clubs" placeholder="Club" {{old('club')}} />  <!-- TODO no input possible -->
+        <input id="club" name="club" required list="clubs" placeholder="Club" />  <!-- TODO no input possible -->
         <datalist id="clubs" name="clubs">
             @for ($i = 0; $i < count($clubs); $i++)
                 <option value="{{$clubs[$i]->name}}" />  <!-- TODO optgroup per country -->
@@ -43,24 +60,24 @@
         </datalist>
 
         <label class="permanent" for="dominant-hand">Dominant hand</label>
-        <select id="dominant-hand" name="dominant-hand" {{old('dominant-hand')}}>
+        <select id="dominant-hand" name="dominant-hand">
             @foreach ($dominantHandValues as $dominantHandValue)
                 <option value="{{$dominantHandValue}}">{{$dominantHandValue}}</option>
             @endforeach
         </select>
 
         <label class="permanent" for="position">Position</label>
-        <select id="position" name="position" {{old('position')}}>
+        <select id="position" name="position">
             @foreach ($positions as $position)
                 <option value="{{$position}}">{{$position}}</option>
             @endforeach
         </select>
 
         <label for="height">Height</label>
-        <input type="number" id="height" name="height" required min="0.01" step="0.01" placeholder="Height" {{old('height')}} />
+        <input type="number" id="height" name="height" required min="0.01" step="0.01" placeholder="Height" />
 
         <label for="weight">Weight</label>
-        <input type="number" id="weight" name="weight" required min="0.1" step="0.1" placeholder="Weight" {{old('weight')}} />
+        <input type="number" id="weight" name="weight" required min="0.1" step="0.1" placeholder="Weight" />
 
         <input type="submit" id="register" name="register" value="Register" />
     </form>
