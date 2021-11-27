@@ -4,29 +4,26 @@ h1 {
 }
 
 #player {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
   margin-bottom: 4rem;
 }
 #player a {
-  color: #ffffff;
-  background-color: #000000;
-  border-radius: 8px;
-  padding: 0.6rem;
+  width: 50%;
+  text-align: center;
+  border: 1px solid #000000;
+  border-top: none;
+  padding: 1rem 0;
 }
-
-.flexbox {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  margin-bottom: 1.5rem;
+#player a:last-of-type {
+  border-left: none;
 }
 
 img {
-  max-width: 100%;
-}
-
-#player-details {
-  font-size: 1.1rem;
-  margin-left: 1rem;
+  max-width: 25rem;
+  height: auto;
 }
 
 p {
@@ -45,5 +42,5 @@ em {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  width: 25rem;
 }
