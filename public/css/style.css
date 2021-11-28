@@ -31,20 +31,21 @@ input {
   border-radius: 5px;
   margin-top: 1rem;
 }
-
+input:focus {
+  border-color: #a259ff;
+  outline: none;
+}
 input[type=submit] {
   background-color: #000000;
   color: #ffffff;
   border-radius: 8px;
 }
-
-input:focus {
-  border-color: #a259ff;
-  outline: none;
-}
-
 input[type=submit]:focus {
   border-color: #000000;
+}
+
+select {
+  height: 2rem;
 }
 
 nav {

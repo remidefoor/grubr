@@ -1,0 +1,69 @@
+@use '../style';
+
+form {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+input {
+    margin: 0;
+}
+
+img {
+    max-width: 30vw;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+#profile-picture-controls {
+    display: flex;
+    flex-flow: row nowrap;
+    height: auto;
+
+    input {
+        width: 50%;        
+        color: style.$black;
+        background-color: style.$white;
+
+        border: 1px solid style.$black;
+        border-top: none;
+        border-radius: 0 0 10px 0;
+
+        &:hover {
+            color: style.$white;
+            background-color: style.$black;
+        }
+    }
+}
+
+#file-input {
+    border-right: none;
+    border-radius: 0 0 0 10px;
+}
+
+#player-info {
+    display: flex;
+    flex-flow: column nowrap;
+    flex-grow: 2;
+    justify-content: space-between;
+
+    margin-left: 2rem;
+}
+
+#genders {
+    align-self: center;
+}
+
+#genders label {
+    display: inline-block;
+}
+
+#genders input {
+    display: inline-block;
+    width: auto;
+    height: auto;
+
+    &:last-of-type {
+        margin-left: 1rem;
+    }
+}
