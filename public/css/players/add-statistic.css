@@ -1,0 +1,22 @@
+form {
+  width: 50vw;
+}
+
+input[type=date] {
+  margin-top: 0.5rem;
+}
+
+#personal-goals-group {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-top: 1rem;
+}
+#personal-goals-group input {
+  flex-grow: 2;
+  width: auto;
+  margin-top: 0;
+}
+#personal-goals-group p {
+  line-height: 2rem;
+  margin: 0 1rem;
+}

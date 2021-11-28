@@ -16,6 +16,12 @@ $green: #0acf83;
     display: none;
 }
 
+.centering-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 body {
     font-family: $font-stack;
 }

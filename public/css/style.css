@@ -2,6 +2,12 @@
   display: none;
 }
 
+.centering-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 body {
   font-family: "Raleway", sans-serif;
 }
