@@ -65,7 +65,7 @@ class PlayerController extends Controller
         $player->last_name = $data['last-name'];
         $player->first_name = $data['first-name'];
         $player->gender = $data['gender'];
-        $player->birht_date = $data['birth-date'];
+        $player->birth_date = $data['birth-date'];
         $player->email = $data['email'];
         $player->dominant_hand = $data['dominant-hand'];
         $player->position = $data['position'];
@@ -83,7 +83,9 @@ class PlayerController extends Controller
     public function processPlayerEdit(Request $request, $uuid, $firstName, $lastName) {
         $data = $this->validatePlayer($request);
         $this->editPlayer($data, $uuid);
-        $this->storeProfilePicture($request, $uuid);
+        if ($request->filled('profile-picture')) {
+            $this->storeProfilePicture($request, $uuid);
+        }
 
         return redirect()->route('get-player', [
             'uuid' => $uuid,

@@ -5,15 +5,15 @@
 @endsection
 
 @section('main')
-    @if ($errors->any())
-    <ul id="errors">
-        @foreach ($errors->all() as $error)
-            <li>{{$error}}</li>
-        @endforeach
-    </ul>
-    @endif
-
-    <div class="centering-container">
+    <div>
+        @if ($errors->any())
+        <ul id="errors">
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+        @endif
+    
         <form method="POST" action="">  <!-- TODO add parameter with route -->
             @csrf
             <label class="permanent" for="date">Date</label>
@@ -46,5 +46,5 @@
     
             <input type="submit" id="add-statistic" name="add-statistic" value="Add statistic" />
         </form>
-    </div>
+    </di>
 @endsection

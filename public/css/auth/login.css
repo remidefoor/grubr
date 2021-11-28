@@ -17,3 +17,7 @@ main div a:hover {
 form {
   margin-bottom: 1rem;
 }
+
+#email {
+  margin-top: 0;
+}
