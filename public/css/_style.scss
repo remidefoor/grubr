@@ -21,6 +21,7 @@ body {
 }
 
 a {
+    display: inline-block;
     color: $black;
     text-decoration: none;
 }
@@ -60,31 +61,34 @@ input[type="submit"]:focus {
     border-color: $black;
 }
 
-header {
-    nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        font-size: 1.2rem;
-        font-weight: bold;
-        text-transform: capitalize;
-        margin: 2.5rem 3rem;
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin: 2.5rem 3rem;
 
-        a:not(:first-child) {
-            margin-left: 1rem;
-        }
+    a:not(:first-child) {
+        margin-left: 1rem;
+    }
 
-        #register {
-            background-color: $black;
-            color: $white;
-            padding: 0.6rem;
-            border-radius: 10px;
-        }
+    #register {
+        background-color: $black;
+        color: $white;
+        padding: 0.6rem;
+        border-radius: 10px;
     }
 }
 
+
 main {
     margin: 0 3rem;
+}
+
+img {
+    border-radius: 10px;
 }
 
 footer {

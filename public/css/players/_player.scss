@@ -1,0 +1,72 @@
+@use '../style';
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#player {
+    margin-bottom: 5rem;
+
+    a {
+        color: style.$white;
+        background-color: style.$black;
+
+        padding: 0.6rem;
+        border-radius: 8px;
+    }
+}
+
+#player-info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    height: 40vh;
+
+    margin-bottom: 1rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+#player-details {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    margin-left: 2rem;
+}
+
+p {
+    padding-bottom: 0.8rem;
+
+    &:last-of-type {
+        padding-bottom: 0;
+    }
+}
+
+em {
+    font-weight: bold;
+}
+
+#player-controls {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+#statistics h1 {
+    text-align: center;
+}
+
+#charts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

@@ -1,37 +1,130 @@
+.hidden {
+  display: none;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+}
+
+a {
+  display: inline-block;
+  color: #000000;
+  text-decoration: none;
+}
+
+label {
+  display: none;
+}
+
+label.permanent {
+  display: block;
+}
+
+input {
+  display: block;
+  box-sizing: border-box;
+  height: 2rem;
+  width: 100%;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #000000;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+input[type=submit] {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+input:focus {
+  border-color: #a259ff;
+  outline: none;
+}
+
+input[type=submit]:focus {
+  border-color: #000000;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin: 2.5rem 3rem;
+}
+nav a:not(:first-child) {
+  margin-left: 1rem;
+}
+nav #register {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 0.6rem;
+  border-radius: 10px;
+}
+
+main {
+  margin: 0 3rem;
+}
+
+img {
+  border-radius: 10px;
+}
+
+footer {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 1.5rem 0;
+  margin-top: 2.5rem;
+}
+footer p {
+  margin-left: 3rem;
+}
+
 h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
 #player {
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  align-items: center;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
 }
 #player a {
-  width: 50%;
-  text-align: center;
-  border: 1px solid #000000;
-  border-top: none;
-  padding: 1rem 0;
+  color: #ffffff;
+  background-color: #000000;
+  padding: 0.6rem;
+  border-radius: 8px;
 }
-#player a:last-of-type {
-  border-left: none;
+
+#player-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 40vh;
+  margin-bottom: 1rem;
 }
 
 img {
-  max-width: 25rem;
+  max-width: 100%;
   height: auto;
 }
 
-p {
-  margin-bottom: 0.8rem;
+#player-details {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-left: 2rem;
 }
 
+p {
+  padding-bottom: 0.8rem;
+}
 p:last-of-type {
-  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 em {
@@ -42,5 +135,16 @@ em {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  width: 25rem;
+  justify-content: space-between;
+}
+
+#statistics h1 {
+  text-align: center;
+}
+
+#charts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
