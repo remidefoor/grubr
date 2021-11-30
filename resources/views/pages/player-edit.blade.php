@@ -47,7 +47,7 @@
             <div id="genders">
                 @foreach ($genders as $gender)
                     @if ($player->gender == $gender)
-                        <input type="radio" id={{$gender}} name="gender" required selected="selected" value="{{$gender}}" />
+                        <input type="radio" id={{$gender}} name="gender" required checked="checked" value="{{$gender}}" />
                     @else
                         <input type="radio" id={{$gender}} name="gender" required value="{{$gender}}" />
                     @endif
@@ -81,7 +81,7 @@
             <select id="position" name="position">
                 @foreach ($positions as $position)
                     @if ($player->position == $position)
-                        <option selected="selected" value={{$position}}>{{$position}}</option>
+                        <option selected="selected" value="{{$position}}">{{$position}}</option>
                     @else
                         <option value="{{$position}}">{{$position}}</option>
                     @endif
