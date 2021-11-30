@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" />  <!-- TODO read -->
     <link rel="stylesheet" type="text/css" href="{{asset("css/reset.css")}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset("css/style.css")}}"/>
+    <script src="{{asset('js/script.js')}}"></script>
     @yield('headInfo')
 </head>
 <body>

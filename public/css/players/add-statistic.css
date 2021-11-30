@@ -91,6 +91,7 @@ nav #register {
 }
 
 #hamburger-menu {
+  display: none;
   margin: 1rem 0 2.5rem 1rem;
   cursor: pointer;
 }
@@ -113,9 +114,13 @@ footer p {
   margin-left: 3rem;
 }
 
-@media screen and (max-width: 40rem) {
+@media screen and (max-width: 30rem) {
+  #hamburger-menu {
+    display: inline;
+  }
+
   nav {
-    display: block;
+    display: none;
     position: absolute;
     z-index: 10;
     background-color: #ffffff;
@@ -128,7 +133,7 @@ footer p {
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
-    margin: 1rem auto;
+    margin: 3rem auto 0 auto;
   }
 }
 main {
