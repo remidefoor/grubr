@@ -19,7 +19,7 @@
             <rect x="0" y="17" width="50" height="10" rx="3" />
             <rect x="0" y="34" width="50" height="10" rx="3" />
         </svg>
-        <nav class="hidden">
+        <nav>
             <div>
                 <a href="{{route("get-players")}}">players</a>
                 @auth
