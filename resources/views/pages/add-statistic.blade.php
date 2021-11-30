@@ -46,5 +46,5 @@
     
             <input type="submit" id="add-statistic" name="add-statistic" value="Add statistic" />
         </form>
-    </di>
+    </div>
 @endsection

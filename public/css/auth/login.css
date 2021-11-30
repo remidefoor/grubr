@@ -1,3 +1,113 @@
+.hidden {
+  display: none;
+}
+
+#error, #errors li {
+  box-sizing: border-box;
+  width: 100%;
+  color: #ffffff;
+  background-color: #ff7262;
+  padding: 0.6rem;
+  border: 2px solid #f24e1e;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+#success {
+  box-sizing: border-box;
+  width: 100%;
+  color: #ffffff;
+  background-color: #0acf83;
+  padding: 1rem;
+  border: 2px solid green;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+}
+
+a {
+  display: inline-block;
+  color: #000000;
+  text-decoration: none;
+}
+
+label {
+  display: none;
+}
+
+label.permanent {
+  display: block;
+}
+
+input {
+  display: block;
+  box-sizing: border-box;
+  height: 2rem;
+  width: 100%;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #000000;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+input:focus {
+  border-color: #a259ff;
+  outline: none;
+}
+input[type=submit] {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 8px;
+}
+input[type=submit]:focus {
+  border-color: #000000;
+}
+
+select {
+  height: 2rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin: 2.5rem 3rem;
+}
+nav a:not(:first-child) {
+  margin-left: 1rem;
+}
+nav #register {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 0.6rem;
+  border-radius: 10px;
+}
+
+main {
+  margin: 0 3rem;
+}
+
+img {
+  border-radius: 10px;
+}
+
+footer {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 1.5rem 0;
+  margin-top: 2.5rem;
+}
+footer p {
+  margin-left: 3rem;
+}
+
 main {
   display: flex;
   justify-content: center;
@@ -20,4 +130,10 @@ form {
 
 #email {
   margin-top: 0;
+}
+
+@media screen and (max-width: 18rem) {
+  main {
+    display: block;
+  }
 }

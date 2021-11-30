@@ -1,4 +1,4 @@
-$purple: #a259ff;
+@use '../style';
 
 main {
     display: flex;
@@ -12,7 +12,7 @@ main {
         
         a {
             display: inline-block;
-            color: $purple;
+            color: style.$purple;
         }
         
         a:hover {
@@ -28,3 +28,5 @@ form {
 #email {
     margin-top: 0;
 }
+
+@include style.flexbox-to-block-main(18rem);

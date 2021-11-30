@@ -1,3 +1,5 @@
+@use '../style';
+
 main {
     display: flex;
     flex-flow: column nowrap;
@@ -11,17 +13,18 @@ input[type="date"] {
 
 #personal-goals-group {
     display: flex;
-    flex-flow: row nowrap;
-    margin-top: 1rem;
+    flex-flow: row wrap;
     
     input {
         flex-grow: 2;
         width: auto;
-        margin-top: 0;
-    }
-
-    p {
-        line-height: 2rem;
-        margin: 0 1rem;
+        margin-top: 1rem;
     }
 }
+
+p {
+    line-height: 2rem;
+    margin: 1rem 1rem 0 1rem;
+}
+
+@include style.flexbox-to-block-main(29rem);
