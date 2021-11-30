@@ -14,7 +14,12 @@
 </head>
 <body>
     <header>
-        <nav>
+        <svg id="hamburger-menu" width="50" height="44" fill="#000000">
+            <rect x="0" y="0" width="50" height="10" rx="3" />
+            <rect x="0" y="17" width="50" height="10" rx="3" />
+            <rect x="0" y="34" width="50" height="10" rx="3" />
+        </svg>
+        <nav class="hidden">
             <div>
                 <a href="{{route("get-players")}}">players</a>
                 @auth
