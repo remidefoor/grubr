@@ -2,6 +2,10 @@
   display: none;
 }
 
+.visible {
+  display: block;
+}
+
 #error, #errors li {
   box-sizing: border-box;
   width: 100%;
@@ -199,4 +203,7 @@ em {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+#charts div {
+  width: 40rem;
 }

@@ -1,20 +1,6 @@
 'use strict';
 
-const BASE_URL = 'https://project.local/api';
-
-const playerStatistics = await fetch(`${BASE_URL}${window.location.pathname}/statistics`)
-    .then(response => response.json());
-
-function createDataset(accumulator, playerStatistic) {
-    accumulator[playerStatistic.date] = playerStatistic.played_minutes;
-    return accumulator;
-}
-
-function getPlayedMinutes() {
-    return playerStatistics.reduce(createDataset, {});
-}
-
-// const datafetcher = import('../modules/data-fetcher.js');
+const datafetcher = await import('../modules/data-fetcher.js');
 
 export const configurations = {
     playingTimes: {
@@ -22,7 +8,8 @@ export const configurations = {
         data: {
             datasets: [
                 {
-                    data: getPlayedMinutes()
+                    label: "Game Time",
+                    data: datafetcher.getPlayedMinutes()
                 }
             ]
         },
@@ -34,7 +21,18 @@ export const configurations = {
         type: 'doughnut',
         data: {
             datasets: [
-
+                {
+                    label: "Personal Goals",
+                    stack: "team"
+                },
+                {
+                    label: "Team Goals",
+                    stack: "team"
+                },
+                {
+                    label: "Opponent Goals",
+                    stack: "opponent"
+                }
             ]
         },
         options: {

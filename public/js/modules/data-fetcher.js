@@ -2,14 +2,16 @@
 
 const BASE_URL = 'https://project.local/api';
 
-const playerStatistics = await fetch(`${BASE_URL}${window.location.pathname}/statistics`)
-    .then(response => response.json());
+const resp = await fetch(`${BASE_URL}${window.location.pathname}/statistics`);
+const playerStatistics = await resp.json();
 
-function createDataset(accumulator, playerStatistic) {
-    accumulator[playerStatistic.date] = playerStatistic.played_minutes;
-    return accumulator;
+export function getPlayerStatistics() {
+    return playerStatistics;
 }
 
-function getPlayedMinutes() {
-    return playerStatistics.reduce(createDataset, {});
+export function getPlayedMinutes() {
+    return playerStatistics.reduce((acc, statistic) => {
+        acc[statistic.date] = statistic.played_minutes;
+        return acc;
+    }, {});
 }

@@ -1,7 +1,5 @@
 'use strict';
 
-import {configurations} from '../modules/chart-configurations.js';
-
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
@@ -12,21 +10,27 @@ function toggleFullscreen(e) {
     // TODO implement
 }
 
-function createCanvasElement(id) {
-    const canvas = document.createElement('canvas');
-    canvas.id = id;
-
+function createChartElement(id) {
+    const canvas = document.createElement('canvas');    
     canvas.addEventListener('click', toggleFullscreen);
 
-    return canvas;
+    const chartContainer = document.createElement('div');
+    chartContainer.id = id;
+    chartContainer.appendChild(canvas);
+
+    return chartContainer;
 }
 
-function loadCharts() {
+async function loadCharts() {
     const $charts = document.querySelector('#charts');
 
-    for (const configuration in configurations) {
-        const canvas = createCanvasElement(configuration);
+    const {configurations} = await import('../modules/chart-configurations.js');
+     for (const configuration in configurations) {
+        const chartElement = createChartElement(configuration);
 
-        $charts.appendChild(canvas);
+        const canvas = chartElement.firstElementChild;
+        new Chart(canvas.getContext('2d'), configurations[configuration]);
+
+        $charts.appendChild(chartElement);
     }
 }

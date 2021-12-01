@@ -25,6 +25,10 @@ $green: #0acf83;
     display: none;
 }
 
+.visible {
+    display: block;
+}
+
 #error, #errors li {
     box-sizing: border-box;
     width: 100%;

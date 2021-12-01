@@ -34,7 +34,7 @@
             </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset id="player-info">
             <label for="email">Email address</label>
             <input type="email" id="email" name="email" required placeholder="Email address" value="{{$player->email}}" />
 

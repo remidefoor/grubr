@@ -7,10 +7,5 @@ function init() {
 }
 
 function toggleNav(e) {
-    const $nav = document.querySelector('nav');
-    if ($nav.style.display === "none") {
-        $nav.style.display = "block";
-    } else {
-        $nav.style.display = "none";
-    }
+    document.querySelector('nav').classList.toggle('visible');
 }

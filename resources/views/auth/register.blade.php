@@ -17,9 +17,8 @@
     <form method="POST" action="{{route('post-register')}}" enctype="multipart/form-data">
         @csrf
         <fieldset id="profile-picture">
-            <div id="video-input" class="hidden">
-                <video>Video stream not available.</video>
-            </div>
+            <video id="video-input" class="hidden" autoplay>Video stream not available.</video>
+
 
             <canvas id="canvas" class="hidden">
             </canvas>
