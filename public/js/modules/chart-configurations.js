@@ -8,7 +8,7 @@ export const configurations = {
         data: {
             datasets: [
                 {
-                    label: "Game Time",
+                    label: 'Game Time',
                     data: datafetcher.getPlayedMinutes()
                 }
             ]
@@ -17,21 +17,24 @@ export const configurations = {
 
         }
     },
-    averageGoals: {
-        type: 'doughnut',
+    gameResults: {
+        type: 'bar',
         data: {
             datasets: [
                 {
-                    label: "Personal Goals",
-                    stack: "team"
+                    label: 'Personal Goals',
+                    stack: 'team',
+                    data: datafetcher.getPersonalGoals()
                 },
                 {
-                    label: "Team Goals",
-                    stack: "team"
+                    label: 'Team Goals',
+                    stack: 'team',
+                    data: datafetcher.getTeamGoalsWithoutPersonalGoals()
                 },
                 {
-                    label: "Opponent Goals",
-                    stack: "opponent"
+                    label: 'Opponent Goals',
+                    stack: 'opponent',
+                    data: datafetcher.getOpponentGoals()
                 }
             ]
         },
