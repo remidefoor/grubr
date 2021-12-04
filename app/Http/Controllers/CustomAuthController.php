@@ -94,7 +94,9 @@ class CustomAuthController extends Controller
     public function processRegister(Request $request) {           
         $data = $this->validatePlayer($request);
         $player = $this->createPlayer($data);
-        $this->storeProfilePicture($request, $player->uuid);
+        // if ($request->filled('profile-picture')) {
+        //     $this->storeProfilePicture($request, $player->uuid);
+        // }
 
         Auth::login($player);
          

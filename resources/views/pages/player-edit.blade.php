@@ -88,11 +88,11 @@
                 @endforeach
             </select>
 
-            <label for="height">Height</label>
-            <input type="number" id="height" name="height" required min="0.01" step="0.01" placeholder="Height" value="{{$player->height}}" />
+            <label for="height">Height (m)</label>
+            <input type="number" id="height" name="height" required min="0.01" step="0.01" placeholder="Height (m)" value="{{$player->height}}" />
 
-            <label for="weight">Weight</label>
-            <input type="number" id="weight" name="weight" required min="0.1" step="0.1" placeholder="Weight" value="{{$player->weight}}" />
+            <label for="weight">Weight (kg)</label>
+            <input type="number" id="weight" name="weight" required min="0.1" step="0.1" placeholder="Weight (kg)" value="{{$player->weight}}" />
 
             <input type="submit" id="edit-player" name="edit-player" value="Update profile" />
         </fieldset>

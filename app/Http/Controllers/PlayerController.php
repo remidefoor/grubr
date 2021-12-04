@@ -44,7 +44,7 @@ class PlayerController extends Controller
     private function validatePlayer(Request $request) {
         $validationRules = [
             'profile-picture' => ['image', 'nullable'],
-            'email' => ['required', 'email', 'unique:App\Models\User'],
+            'email' => ['required', 'email'],
             'last-name' => ['required', 'string'],
             'first-name' => ['required', 'string'],
             'gender' => ['required', 'string', Rule::in(User::getEnumValues('gender'))],
@@ -83,9 +83,9 @@ class PlayerController extends Controller
     public function processPlayerEdit(Request $request, $uuid, $firstName, $lastName) {
         $data = $this->validatePlayer($request);
         $this->editPlayer($data, $uuid);
-        if ($request->filled('profile-picture')) {
-            $this->storeProfilePicture($request, $uuid);
-        }
+        // if ($request->filled('profile-picture')) {
+        //     $this->storeProfilePicture($request, $uuid);
+        // }
 
         return redirect()->route('get-player', [
             'uuid' => $uuid,

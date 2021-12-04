@@ -16,6 +16,7 @@ function init() {
     document.querySelector('#video-input').addEventListener('canplay', setVideoStream);
     document.querySelector('#take-picture').addEventListener('click', displayVideoFrame);
     document.querySelector('#take-new-picture').addEventListener('click', displayVideoStream);
+    document.querySelector('form').addEventListener('submit', submitForm);
 }
 
 function addImgCropper() {
@@ -125,4 +126,15 @@ function displayVideoStream(e) {
             document.querySelector('#take-picture')
         );
     }
+}
+
+function getFormData() {
+    const formData = new FormData(document.querySelector('form'));
+    const croppedProfilePictureCanvas = cropper.getCroppedCanvas();
+    croppedProfilePictureCanvas.toBlob(blob => formData.append('profile-picture', blob));
+
+    return formData;
+}
+
+function submitForm(e) {
 }

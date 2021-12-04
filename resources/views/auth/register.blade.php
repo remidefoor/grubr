@@ -81,11 +81,11 @@
                 @endforeach
             </select>
 
-            <label for="height">Height</label>
-            <input type="number" id="height" name="height" required min="0.01" step="0.01" placeholder="Height" />
+            <label for="height">Height (m)</label>
+            <input type="number" id="height" name="height" required min="0.01" step="0.01" placeholder="Height (m)" />
 
-            <label for="weight">Weight</label>
-            <input type="number" id="weight" name="weight" required min="0.1" step="0.1" placeholder="Weight" />
+            <label for="weight">Weight (kg)</label>
+            <input type="number" id="weight" name="weight" required min="0.1" step="0.1" placeholder="Weight (kg)" />
 
             <input type="submit" id="register" name="register" value="Register" />
         </fieldset>
