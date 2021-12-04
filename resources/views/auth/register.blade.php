@@ -17,11 +17,10 @@
     <form method="POST" action="{{route('post-register')}}" enctype="multipart/form-data">
         @csrf
         <fieldset id="profile-picture">
-            <video id="video-input" class="hidden" autoplay>Video stream not available.</video>
+                <video id="video-input" class="hidden">Video stream not available.</video>
 
-
-            <canvas id="canvas" class="hidden">
-            </canvas>
+                <canvas class="hidden">
+                </canvas>
 
             <img id="output" src="{{asset('media/profile-pictures/default.png')}}" alt="profile picture" title="profile picture" />  <!-- TODO crop & display uploaded profile picture -->
 
