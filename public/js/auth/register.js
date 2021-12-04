@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', init);
 
 function init() {
     // event bindings
-    document.querySelector('#file-input').addEventListener('click', selectFile);
+    const $fileInput = document.querySelector('#file-input');
+    $fileInput.addEventListener('click', selectFile);
+    $fileInput.addEventListener('change', uploadFile);
     document.querySelector('#use-camera').addEventListener('click', initVideoStream);
     document.querySelector('#take-picture').addEventListener('click', displayVideoFrame);
     document.querySelector('#take-new-picture').addEventListener('click', displayVideoStream);
@@ -48,7 +50,12 @@ function selectFile(e) {
 }
 
 function uploadFile(e) {
-    
+    if (e.target.files.length > 0) {
+        const $output = document.querySelector('#output');
+        const src = URL.createObjectURL(e.target.files[0]);
+        $output.src = src;
+
+    }
 }
 
 function initVideoStream(e) {
