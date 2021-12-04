@@ -13,6 +13,7 @@ function init() {
     $fileInput.addEventListener('click', selectFile);
     $fileInput.addEventListener('change', uploadFile);
     document.querySelector('#use-camera').addEventListener('click', initVideoStream);
+    document.querySelector('#video-input').addEventListener('canplay', setVideoStream);
     document.querySelector('#take-picture').addEventListener('click', displayVideoFrame);
     document.querySelector('#take-new-picture').addEventListener('click', displayVideoStream);
 }
@@ -67,6 +68,19 @@ function uploadFile(e) {
     }
 }
 
+function setVideoStream(e) {
+    if (!streaming) {
+        const $videoInput = document.querySelector('#video-input');
+        const $canvas = document.querySelector('canvas');
+    
+        $canvas.width = $videoInput.videoWidth;
+        $canvas.height = $videoInput.videoHeight;
+    
+        updateProfilePictureSetup($videoInput, document.querySelector('#take-picture'));
+        streaming = true;
+    }
+}
+
 function initVideoStream(e) {
     e.preventDefault();
 
@@ -78,9 +92,6 @@ function initVideoStream(e) {
                 const $videoInput = document.querySelector('#video-input');
                 $videoInput.srcObject = stream;
                 $videoInput.play();
-                streaming = true;
-
-                updateProfilePictureSetup($videoInput, document.querySelector('#take-picture'));
             });
     }
 }
