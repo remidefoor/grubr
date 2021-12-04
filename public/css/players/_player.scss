@@ -72,5 +72,10 @@ em {
 
     div {
         width: 40rem;
+        cursor: pointer;
+    }
+
+    div:fullscreen {
+        cursor: auto;
     }
 }

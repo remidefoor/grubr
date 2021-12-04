@@ -206,4 +206,14 @@ em {
 }
 #charts div {
   width: 40rem;
+  cursor: pointer;
+}
+#charts div:-webkit-full-screen {
+  cursor: auto;
+}
+#charts div:-ms-fullscreen {
+  cursor: auto;
+}
+#charts div:fullscreen {
+  cursor: auto;
 }

@@ -6,13 +6,16 @@ function init() {
     loadCharts();
 }
 
-function toggleFullscreen(e) {
-    // TODO implement
+function toFullscreen(e) {
+    if (!document.fullscreenElement) {
+        const parentElem = e.currentTarget.parentElement;
+        parentElem.requestFullscreen();
+    }
 }
 
 function createChartElement(id) {
     const canvas = document.createElement('canvas');    
-    canvas.addEventListener('click', toggleFullscreen);
+    canvas.addEventListener('click', toFullscreen);
 
     const chartContainer = document.createElement('div');
     chartContainer.id = id;
