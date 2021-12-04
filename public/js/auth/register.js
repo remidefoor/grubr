@@ -1,10 +1,13 @@
 'use strict';
 
 let streaming = false;
+let cropper;
 
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
+    addImgCropper();
+
     // event bindings
     const $fileInput = document.querySelector('#file-input');
     $fileInput.addEventListener('click', selectFile);
@@ -12,6 +15,11 @@ function init() {
     document.querySelector('#use-camera').addEventListener('click', initVideoStream);
     document.querySelector('#take-picture').addEventListener('click', displayVideoFrame);
     document.querySelector('#take-new-picture').addEventListener('click', displayVideoStream);
+}
+
+function addImgCropper() {
+    const $output = document.querySelector('#output');
+    cropper = new Cropper($output, { aspectRatio: 1 });
 }
 
 function updateProfilePictureSetup(visibleElem1, visibleElem2) {
@@ -34,8 +42,10 @@ function updateProfilePictureSetup(visibleElem1, visibleElem2) {
 }
 
 function stopVideoStream() {
-    const stream = document.querySelector('#video-input').srcObject;
+    const $videoInput = document.querySelector('#video-input');
+    const stream = $videoInput.srcObject;
     stream.getTracks().forEach(track => track.stop());
+    $videoInput.srcObject = null;
     streaming = false;
 }
 
@@ -43,7 +53,7 @@ function selectFile(e) {
     if (streaming) {
         stopVideoStream();
         updateProfilePictureSetup(
-            document.querySelector('#output'),
+            document.querySelector('#output-wrapper'),
             document.querySelector('#use-camera')
         );
     }
@@ -51,9 +61,8 @@ function selectFile(e) {
 
 function uploadFile(e) {
     if (e.target.files.length > 0) {
-        const $output = document.querySelector('#output');
         const src = URL.createObjectURL(e.target.files[0]);
-        $output.src = src;
+        cropper.replace(src);
 
     }
 }
@@ -83,14 +92,16 @@ function displayVideoFrame(e) {
         const $videoInput = document.querySelector('#video-input');
         const $canvas = document.querySelector('canvas');
         const context = $canvas.getContext('2d');
-        const $output = document.querySelector('#output');
 
         context.clearRect(0, 0, $canvas.width, $canvas.height);
         context.drawImage($videoInput, 0, 0);
 
-        $output.src = $canvas.toDataURL();
+        cropper.replace($canvas.toDataURL());
 
-        updateProfilePictureSetup($output, document.querySelector('#take-new-picture'));
+        updateProfilePictureSetup(
+            document.querySelector('#output-wrapper'),
+            document.querySelector('#take-new-picture')
+        );
     }
 }
 

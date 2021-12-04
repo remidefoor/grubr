@@ -1,7 +1,9 @@
 @extends('layouts.master')
 
 @section('headInfo')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" integrity="sha512-0SPWAwpC/17yYyZ/4HSllgaK7/gg9OlVozq8K7rf3J8LvCjYEEIfzzpnA2/SSjpGIunCSD18r3UhvDcu/xncWA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/auth/register.css')}}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js" integrity="sha512-ooSWpxJsiXe6t4+PPjCgYmVfr1NS5QXJACcR/FPpsdm6kqG1FmQ2SVyg2RXeVuCRBLr0lWHnWJP6Zs1Efvxzww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{asset('js/auth/register.js')}}"></script>
 @endsection
 
@@ -17,11 +19,9 @@
     <form method="POST" action="{{route('post-player-edit', ['uuid' => $player->uuid, 'firstName' => $player->first_name, 'lastName' => $player->last_name])}}" enctype="multipart/form-data">  <!-- TODO add parameter with route -->
         @csrf
         <fieldset id="profile-picture">
-            <div id="video-input" class="hidden">
-                <video>Video stream not available.</video>
-            </div>
+            <video id="video-input" class="hidden">Video stream not available.</video>
 
-            <canvas id="canvas" class="hidden">
+            <canvas class="hidden">
             </canvas>
 
             <img id="output" src="{{asset('media/profile-pictures/default.png')}}" alt="profile picture" title="profile picture" />  <!-- TODO crop & display uploaded profile picture -->

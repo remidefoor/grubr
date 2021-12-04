@@ -9,9 +9,15 @@ input {
     margin: 0;
 }
 
-#video-input, #output, img {
+#video-input, #output-wrapper {
     max-width: 30vw;
     height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+#output {
+    display: block;
+    max-width: 100%;
     border-radius: 10px 10px 0 0;
 }
 
