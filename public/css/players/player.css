@@ -40,6 +40,7 @@ a {
 
 label {
   display: none;
+  margin-top: 1rem;
 }
 
 label.permanent {
@@ -71,7 +72,9 @@ input[type=submit]:focus {
 }
 
 select {
+  width: 100%;
   height: 2rem;
+  margin-top: 1rem;
 }
 
 nav {
@@ -217,3 +220,9 @@ em {
 #charts div:fullscreen {
   cursor: auto;
 }
+
+/* @media screen and (max-width: 50rem) {
+    #player-info {
+        display: block;
+    }
+} */
