@@ -24,7 +24,39 @@ export const configurations = {
             ]
         },
         options: {
-
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Playing Times',
+                    font: {
+                        size: '20rem'
+                    }
+                },
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Game Day',
+                        font: {
+                            weight: 'bold'
+                        }
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Game Time (min)',
+                        font: {
+                            weight: 'bold'
+                        }
+                    },
+                    max: 60
+                }
+            }
         }
     },
     gameResults: {
@@ -52,7 +84,35 @@ export const configurations = {
             ]
         },
         options: {
-
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Game Results',
+                    font: {
+                        size: '20rem'
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Game Day',
+                        font: {
+                            weight: 'bold'
+                        }
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Goals',
+                        font: {
+                            weight: 'bold'
+                        }
+                    }
+                }
+            }
         }
     },
     personalGoalsRatio: {
