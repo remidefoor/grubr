@@ -9,6 +9,7 @@ h1 {
     margin-bottom: 5rem;
 
     a {
+        display: block;
         color: style.$white;
         background-color: style.$black;
 
@@ -28,6 +29,7 @@ h1 {
 }
 
 img {
+    display: block;
     max-width: 100%;
     height: auto;
 }
@@ -39,13 +41,13 @@ img {
     justify-content: space-between;
 
     margin-left: 2rem;
-}
 
-p {
-    padding-bottom: 0.8rem;
-
-    &:last-of-type {
-        padding-bottom: 0;
+    p {
+        padding-bottom: 0.8rem;
+    
+        &:last-of-type {
+            padding-bottom: 0;
+        }
     }
 }
 
@@ -58,6 +60,10 @@ em {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+}
+
+#email {
+    max-width: fit-content;
 }
 
 #statistics h1 {
@@ -80,8 +86,37 @@ em {
     }
 }
 
-/* @media screen and (max-width: 50rem) {
+@media screen and (max-width: 50rem) {
+    $img-max-width: 50%;
+
+    h1 {
+        text-align: center;
+    }
+
     #player-info {
         display: block;
+        height: auto;
     }
-} */
+
+    img {
+        max-width: $img-max-width;
+        margin: 0 auto 2rem auto;
+    }
+
+    #player-details {
+        display: block;
+
+        p {
+            text-align: center;
+        }
+    }
+
+    #player-controls {
+        max-width: $img-max-width;
+        margin: auto;
+    }
+
+    #email {
+        margin: auto;
+    }
+}

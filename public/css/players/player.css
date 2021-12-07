@@ -152,6 +152,7 @@ h1 {
   margin-bottom: 5rem;
 }
 #player a {
+  display: block;
   color: #ffffff;
   background-color: #000000;
   padding: 0.6rem;
@@ -167,6 +168,7 @@ h1 {
 }
 
 img {
+  display: block;
   max-width: 100%;
   height: auto;
 }
@@ -178,11 +180,10 @@ img {
   justify-content: space-between;
   margin-left: 2rem;
 }
-
-p {
+#player-details p {
   padding-bottom: 0.8rem;
 }
-p:last-of-type {
+#player-details p:last-of-type {
   padding-bottom: 0;
 }
 
@@ -195,6 +196,12 @@ em {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
+}
+
+#email {
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
 }
 
 #statistics h1 {
@@ -221,8 +228,34 @@ em {
   cursor: auto;
 }
 
-/* @media screen and (max-width: 50rem) {
-    #player-info {
-        display: block;
-    }
-} */
+@media screen and (max-width: 50rem) {
+  h1 {
+    text-align: center;
+  }
+
+  #player-info {
+    display: block;
+    height: auto;
+  }
+
+  img {
+    max-width: 50%;
+    margin: 0 auto 2rem auto;
+  }
+
+  #player-details {
+    display: block;
+  }
+  #player-details p {
+    text-align: center;
+  }
+
+  #player-controls {
+    max-width: 50%;
+    margin: auto;
+  }
+
+  #email {
+    margin: auto;
+  }
+}

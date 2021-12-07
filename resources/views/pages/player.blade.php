@@ -56,7 +56,7 @@
                 <a href="{{route('get-player-edit', ['uuid' => $player->uuid, 'firstName' => $player->first_name, 'lastName' => $player->last_name])}}">Edit profile</a>
             </div>
         @else
-            <a id="emai" href="mailto:{{$player->email}}">Get in touch</a>
+            <a id="email" href="mailto:{{$player->email}}">Get in touch</a>
         @endif
     </section>
 
