@@ -88,15 +88,13 @@ class CustomAuthController extends Controller
     }
 
     private function storeProfilePicture(Request $request, $uuid) {
-        $request->file('profile-picture')->storeAs('profile-pictures', $uuid);
+        $request->file('file-input')->storeAs('profile-pictures', $uuid);
     }
 
     public function processRegister(Request $request) {           
         $data = $this->validatePlayer($request);
         $player = $this->createPlayer($data);
-        // if ($request->filled('profile-picture')) {
-        //     $this->storeProfilePicture($request, $player->uuid);
-        // }
+        $this->storeProfilePicture($request, $player->uuid);
 
         Auth::login($player);
          

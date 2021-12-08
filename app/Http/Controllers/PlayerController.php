@@ -77,15 +77,13 @@ class PlayerController extends Controller
     }
 
     private function storeProfilePicture(Request $request, $uuid) {
-        $request->file('profile-picture')->storeAs('profile-pictures', $uuid);
+        $request->file('file-input')->storeAs('profile-pictures', $uuid);
     }
 
     public function processPlayerEdit(Request $request, $uuid, $firstName, $lastName) {
         $data = $this->validatePlayer($request);
         $this->editPlayer($data, $uuid);
-        // if ($request->filled('profile-picture')) {
-        //     $this->storeProfilePicture($request, $uuid);
-        // }
+        $this->storeProfilePicture($request, $uuid);
 
         return redirect()->route('get-player', [
             'uuid' => $uuid,

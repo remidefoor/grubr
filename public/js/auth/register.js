@@ -127,13 +127,16 @@ function displayVideoStream(e) {
     }
 }
 
-function getFormData() {
-    const formData = new FormData(document.querySelector('form'));
-    const croppedProfilePictureCanvas = cropper.getCroppedCanvas();
-    croppedProfilePictureCanvas.toBlob(blob => formData.append('profile-picture', blob));
-
-    return formData;
-}
-
 function submitForm(e) {
+    e.preventDefault();
+
+    const croppedProfilePictureCanvas = cropper.getCroppedCanvas();
+    console.log(croppedProfilePictureCanvas);
+    croppedProfilePictureCanvas.toBlob(blob => {
+        const profilePicture = new File([blob], 'profile-picture.png');
+        const container = new DataTransfer();
+        container.items.add(profilePicture);
+        document.querySelector('#file-input').files = container.files;
+        e.target.submit();
+    });
 }

@@ -41,7 +41,11 @@ form {
         }
     }
 
-    #file-input {
+    label[for="file-input"] {
+        display: block;
+    }
+
+/*     #file-input {
         color: transparent;
     }
 
@@ -64,7 +68,7 @@ form {
 
     #file-input:hover::before {
         background-color: style.$black;
-    }
+    } */
 }
 
 #file-input {
