@@ -168,30 +168,6 @@ form {
   display: flex;
   flex-flow: row nowrap;
   height: auto;
-  /*     #file-input {
-          color: transparent;
-      }
-
-      #file-input::-webkit-file-upload-button {
-          visibility: hidden;
-      }
-
-      #file-input::before {
-          content: 'Upload picture';
-          display: block;
-          height: 2rem;
-          border: 2px solid style.$black;
-          border-right: none;
-          border-radius: 0 0 0 10px;
-          outline: none;
-          white-space: nowrap;
-          user-select: none;
-          -webkit-user-select: none;
-      }
-
-      #file-input:hover::before {
-          background-color: style.$black;
-      } */
 }
 #profile-picture-controls input {
   width: 50%;
@@ -204,14 +180,6 @@ form {
 #profile-picture-controls input:hover {
   color: #ffffff;
   background-color: #000000;
-}
-#profile-picture-controls label[for=file-input] {
-  display: block;
-}
-
-#file-input {
-  border-right: none;
-  border-radius: 0 0 0 10px;
 }
 
 #player-info {

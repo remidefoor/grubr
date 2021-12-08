@@ -40,40 +40,6 @@ form {
             background-color: style.$black;
         }
     }
-
-    label[for="file-input"] {
-        display: block;
-    }
-
-/*     #file-input {
-        color: transparent;
-    }
-
-    #file-input::-webkit-file-upload-button {
-        visibility: hidden;
-    }
-
-    #file-input::before {
-        content: 'Upload picture';
-        display: block;
-        height: 2rem;
-        border: 2px solid style.$black;
-        border-right: none;
-        border-radius: 0 0 0 10px;
-        outline: none;
-        white-space: nowrap;
-        user-select: none;
-        -webkit-user-select: none;
-    }
-
-    #file-input:hover::before {
-        background-color: style.$black;
-    } */
-}
-
-#file-input {
-    border-right: none;
-    border-radius: 0 0 0 10px;
 }
 
 #player-info {

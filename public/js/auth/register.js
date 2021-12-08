@@ -6,8 +6,6 @@ let cropper;
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
-    addImgCropper();
-
     // event bindings
     const $fileInput = document.querySelector('#file-input');
     $fileInput.addEventListener('click', selectFile);
@@ -63,6 +61,10 @@ function selectFile(e) {
 
 function uploadFile(e) {
     if (e.target.files.length > 0) {
+        if (!cropper) {
+            addImgCropper();
+        }
+
         const src = URL.createObjectURL(e.target.files[0]);
         cropper.replace(src);
     }
@@ -103,6 +105,9 @@ function displayVideoFrame(e) {
         const $videoInput = document.querySelector('#video-input');
         const $canvas = document.querySelector('canvas');
         const context = $canvas.getContext('2d');
+        if (!cropper) {
+            addImgCropper();
+        }
 
         context.clearRect(0, 0, $canvas.width, $canvas.height);
         context.drawImage($videoInput, 0, 0);
@@ -128,15 +133,18 @@ function displayVideoStream(e) {
 }
 
 function submitForm(e) {
-    e.preventDefault();
+    if (cropper) {
+        console.log(cropper);
+        e.preventDefault();
 
-    const croppedProfilePictureCanvas = cropper.getCroppedCanvas();
-    console.log(croppedProfilePictureCanvas);
-    croppedProfilePictureCanvas.toBlob(blob => {
-        const profilePicture = new File([blob], 'profile-picture.png');
-        const container = new DataTransfer();
-        container.items.add(profilePicture);
-        document.querySelector('#file-input').files = container.files;
-        e.target.submit();
-    });
+        const croppedProfilePictureCanvas = cropper.getCroppedCanvas();
+        console.log(croppedProfilePictureCanvas);
+        croppedProfilePictureCanvas.toBlob(blob => {
+            const profilePicture = new File([blob], 'profile-picture.png');
+            const container = new DataTransfer();
+            container.items.add(profilePicture);
+            document.querySelector('#file-input').files = container.files;
+            e.target.submit();
+        });
+    }
 }

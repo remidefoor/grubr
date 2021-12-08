@@ -24,9 +24,12 @@
             <canvas class="hidden">
             </canvas>
 
-            <img id="output" src="{{asset('media/profile-pictures/default.png')}}" alt="profile picture" title="profile picture" />  <!-- TODO crop & display uploaded profile picture -->
+            <div id="output-wrapper">
+                <img id="output" src="{{$profilePictureUrl}}" alt="profile picture" title="profile picture" />  <!-- TODO crop & display uploaded profile picture -->
+            </div>
 
             <div id="profile-picture-controls">
+                <label for="file-input">File input</label>
                 <input type="file" id="file-input" name="file-input" accept="image/*" capture="image/*" />
                 <input type="submit" id="use-camera" name="use-camera" value="Use camera" />
                 <input type="submit" id="take-picture" name="take-picture" class="hidden" value="Take picture" />

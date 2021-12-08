@@ -83,7 +83,9 @@ class PlayerController extends Controller
     public function processPlayerEdit(Request $request, $uuid, $firstName, $lastName) {
         $data = $this->validatePlayer($request);
         $this->editPlayer($data, $uuid);
-        $this->storeProfilePicture($request, $uuid);
+        if ($request->has('file-input')) {
+            $this->storeProfilePicture($request, $uuid);
+        }
 
         return redirect()->route('get-player', [
             'uuid' => $uuid,
