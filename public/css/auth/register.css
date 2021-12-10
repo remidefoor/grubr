@@ -69,9 +69,6 @@ input[type=submit] {
   color: #ffffff;
   border-radius: 8px;
 }
-input[type=submit]:focus {
-  border-color: #000000;
-}
 
 select {
   font-family: "Raleway", sans-serif;
@@ -162,6 +159,10 @@ form {
   border-radius: 10px 10px 0 0;
 }
 
+video {
+  display: block;
+}
+
 #output {
   display: block;
   max-width: 100%;
@@ -185,6 +186,9 @@ form {
 #profile-picture-controls input:hover {
   color: #ffffff;
   background-color: #000000;
+}
+#profile-picture-controls input:focus {
+  border-color: #000000;
 }
 
 #file-input-substitute {

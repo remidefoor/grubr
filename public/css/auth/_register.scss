@@ -15,6 +15,10 @@ form {
     border-radius: 10px 10px 0 0;
 }
 
+video {
+    display: block;
+}
+
 #output {
     display: block;
     max-width: 100%;
@@ -39,6 +43,10 @@ form {
         &:hover {
             color: style.$white;
             background-color: style.$black;
+        }
+
+        &:focus {
+            border-color: style.$black;
         }
     }
 }

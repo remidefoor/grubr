@@ -95,10 +95,6 @@ input {
         color: $white;
         border-radius: 8px;
     }
-
-    &[type="submit"]:focus {
-        border-color: $black;
-    }
 }
 
 select {

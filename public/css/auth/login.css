@@ -69,9 +69,6 @@ input[type=submit] {
   color: #ffffff;
   border-radius: 8px;
 }
-input[type=submit]:focus {
-  border-color: #000000;
-}
 
 select {
   font-family: "Raleway", sans-serif;
