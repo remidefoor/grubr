@@ -58,6 +58,7 @@ input {
   border-style: solid;
   border-color: #000000;
   border-radius: 5px;
+  padding-left: 0.5rem;
   margin-top: 1rem;
 }
 input:focus {
@@ -68,6 +69,7 @@ input[type=submit] {
   background-color: #000000;
   color: #ffffff;
   border-radius: 8px;
+  padding-left: 0;
 }
 
 select {
@@ -236,6 +238,7 @@ video {
   display: inline-block;
   width: auto;
   height: auto;
+  padding: 0;
 }
 #genders input:last-of-type {
   margin-left: 1rem;
