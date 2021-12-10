@@ -16,19 +16,19 @@ Route::get('/players/{uuid}/{firstName}-{lastName}', [PlayerController::class, '
 
 Route::get('/players/{uuid}/{firstName}-{lastName}/edit', [PlayerController::class, 'getPlayerEditView'])
     ->name('get-player-edit')
-    /*->middleware('auth')*/;
+    ->middleware('auth');
 
 Route::post('/players/{uuid}/{firstName}-{lastName}/edit', [PlayerController::class, 'processPlayerEdit'])
     ->name('post-player-edit')
-    /*->middleware('auth')*/;
+    ->middleware('auth');
 
 Route::get('/players/{uuid}/{firstName}-{lastName}/add-statistic', [PlayerController::class, 'getAddStatisticView'])
     ->name('get-add-statistic')
-    /*->middleware('auth')*/;
+    ->middleware('auth');
 
 Route::post('/players/{uuid}/{firstName}-{lastName}/add-statistic', [PlayerController::class, 'processAddStatistic'])
     ->name('post-add-statistic')
-    /*->middleware('auth')*/;
+    ->middleware('auth');
 
 // auth
 Route::get('/login', [CustomAuthController::class, 'getLoginView'])
@@ -46,5 +46,3 @@ Route::post('/register', [CustomAuthController::class, 'processRegister'])
 Route::get('/logout', [CustomAuthController::class, 'processLogOut'])
     ->name('get-logout')
     ->middleware('auth');
-
-// require __DIR__.'auth.php';
