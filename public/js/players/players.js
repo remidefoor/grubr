@@ -7,7 +7,7 @@ function init() {
 
     // event bindings
     document.querySelector('#player-search-bar').addEventListener('keyup', displayMatchingPlayers);
-    document.querySelector('.player').addEventListener('click', redirectToPlayerPage);
+    document.querySelectorAll('.player').forEach(player => player.addEventListener('click', redirectToPlayerPage));
 }
 
 function setPlayerOutlineColors() {
@@ -36,5 +36,12 @@ function displayMatchingPlayers(e) {
 }
 
 function redirectToPlayerPage(e) {
+    const BASE_URL = 'https://project.local/players';
+    const uuid = e.currentTarget.getAttribute('data-uuid');
+    const firstName = e.currentTarget.getAttribute('data-first-name');
+    const lastName = e.currentTarget.getAttribute('data-last-name');
 
+    const url = `${BASE_URL}/${uuid}/${firstName}-${lastName}`;
+
+    window.location.href = url;
 }
