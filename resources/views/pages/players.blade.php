@@ -7,19 +7,19 @@
 @endsection
 
 @section('main')
+    <input type="text" id="player-search-bar" name="player-search-bar" placeholder="Search..." />
+
     <article id="players">
         @for ($i = 0; $i < count($players); $i++)
-                <a href="{{route('get-player', ['uuid' => $players[$i]->uuid, 'firstName' => $players[$i]->first_name, 'lastName' => $players[$i]->last_name])}}">
-                    <article class="player">
-                        @if (file_exists(public_path('media/profile-pictures/' . $players[$i]->uuid)))
-                            <image src="{{asset('media/profile-pictures/' . $players[$i]->uuid)}}" alt="picture of {{$players[$i]->fist_name}} {{$players[$i]->last_name}}" />
-                        @else
-                            <image src="{{asset('media/profile-pictures/default.png')}}" alt="picture of {{$players[$i]->fist_name}} {{$players[$i]->last_name}}" />
-                        @endif
-                        <h1>{{$players[$i]->first_name}} {{$players[$i]->last_name}}</h1>
-                        <h2>{{$players[$i]->club->name}}</h2>
-                    </article>
-                </a>
+            <article class="player" data-uuid="{{$players[$i]->uuid}}" data-first-name="{{$players[$i]->first_name}}" data-last-name="{{$players[$i]->last_name}}">
+                @if (file_exists(public_path('media/profile-pictures/' . $players[$i]->uuid)))
+                    <image src="{{asset('media/profile-pictures/' . $players[$i]->uuid)}}" alt="picture of {{$players[$i]->fist_name}} {{$players[$i]->last_name}}" />
+                @else
+                    <image src="{{asset('media/profile-pictures/default.png')}}" alt="picture of {{$players[$i]->fist_name}} {{$players[$i]->last_name}}" />
+                @endif
+                <h1>{{$players[$i]->first_name}} {{$players[$i]->last_name}}</h1>
+                <h2>{{$players[$i]->club->name}}</h2>
+            </article>
         @endfor
     </article>
 @endsection

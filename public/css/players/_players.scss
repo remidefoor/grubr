@@ -1,6 +1,12 @@
 $players-font-stack: 'JetBrains Mono', monospace;
 $black: #000000;
 
+#player-search-bar {
+    width: 50%;
+    border-radius: 20px;
+    margin: 0 auto 1rem auto;
+}
+
 #players {
     display: flex;
     flex-direction: row;
@@ -18,6 +24,7 @@ $black: #000000;
     box-shadow:
         0 4px 8px 0 rgba(0, 0, 0, 0.2),
         0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
 }
 
 img {
