@@ -29,7 +29,7 @@
             </div>
 
             <div id="profile-picture-controls">
-                <label for="file-input">File input</label>
+                <label id="file-input-substitute" for="file-input">File input</label>
                 <input type="file" id="file-input" name="file-input" accept="image/*" capture="image/*" />
                 <input type="submit" id="use-camera" name="use-camera" value="Use camera" />
                 <input type="submit" id="take-picture" name="take-picture" class="hidden" value="Take picture" />

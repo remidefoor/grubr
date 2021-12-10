@@ -27,6 +27,7 @@ form {
     height: auto;
 
     input {
+        font-size: 1rem;
         width: 50%;
         color: style.$black;
         background-color: style.$white;
@@ -40,6 +41,30 @@ form {
             background-color: style.$black;
         }
     }
+}
+
+#file-input-substitute {
+    display: block;
+    box-sizing: border-box;
+    width: 50%;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    
+    border: 2px solid style.$black;
+    border-top: none;
+    border-right: none;
+    border-bottom-left-radius: 10px;
+    margin: 0;
+
+    &:hover {
+        color: style.$white;
+        background-color: style.$black;
+    }
+}
+
+#file-input {
+    display: none;
 }
 
 #player-info {
