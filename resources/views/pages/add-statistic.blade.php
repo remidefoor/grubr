@@ -14,7 +14,7 @@
         </ul>
         @endif
     
-        <form method="POST" action="">
+        <form method="POST" action="{{route('post-add-statistic', ['uuid' => $player->uuid, 'firstName' => $player->first_name, 'lastName' => $player->last_name])}}">
             @csrf
             <label class="permanent" for="date">Date</label>
             <input type="date" id="date" name="date" required autofocus placeholder="Date" />

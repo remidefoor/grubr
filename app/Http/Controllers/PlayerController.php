@@ -20,7 +20,7 @@ class PlayerController extends Controller
         if (file_exists(public_path('media/profile-pictures/' . $uuid))) {
             return asset('media/profile-pictures/' . $uuid);
         }
-        return asset('media/profile-pictures/default.png');
+        return asset('media/profile-pictures/default.gif');
     }
 
     public function getPlayerView($uuid, $firstName, $lastName) {
@@ -95,7 +95,7 @@ class PlayerController extends Controller
     }
 
     public function getAddStatisticView($uuid, $firstName, $lastName) {
-        return view('pages.add-statistic', ['opponentClubs' => Club::getOpponentClubs($uuid)->orderBy('name')->get()]);
+        return view('pages.add-statistic', ['player' => User::find($uuid) ,'opponentClubs' => Club::getOpponentClubs($uuid)->orderBy('name')->get()]);
     }
 
     private function validateStatistic(Request $request, $uuid) {
