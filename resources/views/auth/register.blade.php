@@ -25,7 +25,7 @@
             </canvas>
 
             <div id="output-wrapper">
-                <img id="output" src="{{asset('media/profile-pictures/default.png')}}" alt="profile picture" title="profile picture" />  <!-- TODO crop & display uploaded profile picture -->
+                <img id="output" src="{{asset('media/profile-pictures/default.png')}}" alt="profile picture" title="profile picture" />
             </div>
 
             <div id="profile-picture-controls">
@@ -61,10 +61,10 @@
             <input type="date" id="birth-date" name="birth-date" required />
 
             <label for="club">Club</label>
-            <input id="club" name="club" required list="clubs" placeholder="Club" />  <!-- TODO no input possible -->
+            <input id="club" name="club" required list="clubs" placeholder="Club" />
             <datalist id="clubs" name="clubs">
                 @for ($i = 0; $i < count($clubs); $i++)
-                    <option value="{{$clubs[$i]->name}}" />  <!-- TODO optgroup per country -->
+                    <option value="{{$clubs[$i]->name}}" />
                 @endfor
             </datalist>
 

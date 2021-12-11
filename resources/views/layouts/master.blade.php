@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>grubr.com</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />  <!-- TODO read -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />  <!-- TODO read -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" />  <!-- TODO read -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" />
     <link rel="stylesheet" type="text/css" href="{{asset("css/reset.css")}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset("css/style.css")}}"/>
     <script src="{{asset('js/script.js')}}"></script>

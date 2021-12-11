@@ -16,7 +16,7 @@
         </ul>
     @endif
 
-    <form method="POST" action="{{route('post-player-edit', ['uuid' => $player->uuid, 'firstName' => $player->first_name, 'lastName' => $player->last_name])}}" enctype="multipart/form-data">  <!-- TODO add parameter with route -->
+    <form method="POST" action="{{route('post-player-edit', ['uuid' => $player->uuid, 'firstName' => $player->first_name, 'lastName' => $player->last_name])}}" enctype="multipart/form-data">
         @csrf
         <fieldset id="profile-picture">
             <video id="video-input" class="hidden">Video stream not available.</video>
@@ -25,7 +25,7 @@
             </canvas>
 
             <div id="output-wrapper">
-                <img id="output" src="{{$profilePictureUrl}}" alt="profile picture" title="profile picture" />  <!-- TODO crop & display uploaded profile picture -->
+                <img id="output" src="{{$profilePictureUrl}}" alt="profile picture" title="profile picture" />
             </div>
 
             <div id="profile-picture-controls">
@@ -62,10 +62,10 @@
             <input type="date" id="birth-date" name="birth-date" required value="{{$player->birth_date}}" />
 
             <label for="club">Club</label>
-            <input id="club" name="club" required list="clubs" placeholder="Club" value="{{$player->club->name}}" />  <!-- TODO no input possible -->
+            <input id="club" name="club" required list="clubs" placeholder="Club" value="{{$player->club->name}}" />
             <datalist id="clubs" name="clubs">
                 @for ($i = 0; $i < count($clubs); $i++)
-                    <option value="{{$clubs[$i]->name}}" />  <!-- TODO optgroup per country -->
+                    <option value="{{$clubs[$i]->name}}" />
                 @endfor
             </datalist>
 

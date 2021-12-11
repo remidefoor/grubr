@@ -13,8 +13,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    // TODO refine model
-
     /**
      * The primary key associated with the table.
      *
@@ -77,7 +75,7 @@ class User extends Authenticatable
         return $this->hasMany(Statistic::class);
     }
 
-    public static function getEnumValues($columnName) {  // TODO read
+    public static function getEnumValues($columnName) {
         $arr = DB::select(DB::raw('SHOW COLUMNS FROM users WHERE Field = "'.$columnName.'"'));
         if (count($arr) == 0){
             return array();

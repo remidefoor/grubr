@@ -9,8 +9,6 @@ class Statistic extends Model
 {
     use HasFactory;
 
-    // TODO refine model
-
     /**
      * The attributes that are mass assignable.
      *
