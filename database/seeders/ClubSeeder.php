@@ -14,7 +14,7 @@ class ClubSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        DB::table('clubs')->insert([
             ['name' => 'DHW Antwerpen HC', 'country' => 'België', 'city' => 'Antwerpen'],
             ['name' => 'Olse Merksem HC', 'country' => 'België', 'city' => 'Antwerpen Merksem'],
             ['name' => 'KV Sasja HC Hoboken', 'country' => 'België', 'city' => 'Antwerpen'],
