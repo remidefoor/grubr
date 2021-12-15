@@ -1,6 +1,6 @@
 'use stict';
 
-const BASE_URL = 'https://project.local/api';
+const BASE_URL = '/api';
 
 const resp = await fetch(`${BASE_URL}${window.location.pathname}/statistics`);
 const playerStatistics = await resp.json();
