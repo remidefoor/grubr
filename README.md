@@ -1,17 +1,18 @@
-# Requirements
+# Configuration
 
 ## Database
 
-- MySQL instance running at localhost.
-- Credentials:
-  - Username: user
-  - Password: user
+Configure the following properties in the `.env` file, which can be found in the root of the project.
 
-All of this can be reconfigured in the database section of the `.env` file in the root of the project, should you wish to deviate form the above settings.
+> DB_CONNECTION=mysql  
+> DB_HOST=127.0.0.1  
+> DB_PORT=3306  
+> DB_DATABASE=handball  
+> DB_USERNAME=dbuser  
+> DB_PASSWORD=1234  
 
 
-
-# Installation
+# Running the application
 
 1. Create a new database, called `handball`.
 
@@ -40,3 +41,7 @@ All of this can be reconfigured in the database section of the `.env` file in th
       ```bash
       php artisan db:seed
       ```
+
+The application is now at your disposal, browse to it using on of the following URLs:
+- https://webtech-project.local
+- http://webtech-project.local
