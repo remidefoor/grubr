@@ -28,7 +28,7 @@ Configure the following properties in the `.env` file, which can be found in the
 
    2. Execute the following command.
 
-      ```bash
+      ```
       php artisan migrate
       ```
 
@@ -38,10 +38,19 @@ Configure the following properties in the `.env` file, which can be found in the
 
    2. Execute the following command.
 
-      ```bash
+      ```
       php artisan db:seed
       ```
 
-The application is now at your disposal, browse to it using on of the following URLs:
-- https://webtech-project.local
-- http://webtech-project.local
+4. Create the necessary symbolic links.
+
+   1. Navigate into the project folder.
+
+   2. Execute the following command.
+
+      ```
+      php artisan storage:link
+      ```
+   
+
+Congratulations, the application is now at your disposal!
