@@ -36,7 +36,7 @@ function displayMatchingPlayers(e) {
 }
 
 function redirectToPlayerPage(e) {
-    const BASE_URL = 'test/players';
+    const BASE_URL = '/players';
     const uuid = e.currentTarget.getAttribute('data-uuid');
     const firstName = e.currentTarget.getAttribute('data-first-name');
     const lastName = e.currentTarget.getAttribute('data-last-name');
