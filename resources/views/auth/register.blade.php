@@ -25,7 +25,7 @@
             </canvas>
 
             <div id="output-wrapper">
-                <img id="output" src="{{asset('media/profile-pictures/default.png')}}" alt="profile picture" title="profile picture" />
+                <img id="output" src="{{asset('media/profile-pictures/default.gif')}}" alt="profile picture" title="profile picture" />
             </div>
 
             <div id="profile-picture-controls">
