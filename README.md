@@ -11,6 +11,7 @@ Configure the following properties in the `.env` file, which can be found in the
 > DB_USERNAME=dbuser  
 > DB_PASSWORD=1234  
 
+&nbsp;
 
 # Running the application
 
@@ -54,3 +55,10 @@ Configure the following properties in the `.env` file, which can be found in the
    
 
 Congratulations, the application is now at your disposal!
+
+&nbsp;
+
+# Usage
+
+The application has been seeded with numerous test users to mock a production application.  
+Each user containing a number that is a multiple of 5 has also been seeded with mock data.
