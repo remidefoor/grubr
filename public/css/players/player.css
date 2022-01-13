@@ -223,12 +223,15 @@ em {
   cursor: pointer;
 }
 #charts div:-webkit-full-screen {
+  background-color: #ffffff;
   cursor: auto;
 }
 #charts div:-ms-fullscreen {
+  background-color: #ffffff;
   cursor: auto;
 }
 #charts div:fullscreen {
+  background-color: #ffffff;
   cursor: auto;
 }
 
