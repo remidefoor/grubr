@@ -9,7 +9,6 @@ function init() {
 function toFullscreen(e) {
     if (!document.fullscreenElement) {
         const parentElem = e.currentTarget.parentElement;
-        console.log(parentElem);
         parentElem.requestFullscreen();
     }
 }

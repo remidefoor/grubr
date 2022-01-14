@@ -22,8 +22,8 @@ function setPlayerOutlineColors() {
 function displayMatchingPlayers(e) {
     const searchTerm = e.currentTarget.value.toLowerCase();
     document.querySelectorAll('.player').forEach(player => {
-        const firstName = player.getAttribute('data-first-name').toLocaleLowerCase();
-        const lastName = player.getAttribute('data-last-name').toLocaleLowerCase();
+        const firstName = player.getAttribute('data-first-name').toLowerCase();
+        const lastName = player.getAttribute('data-last-name').toLowerCase();
         const fullName = firstName + ' ' + lastName;
         const reverseFullName = lastName + ' ' + firstName;
         if (firstName.match(searchTerm) || lastName.match(searchTerm) ||

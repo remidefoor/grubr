@@ -134,11 +134,9 @@ function displayVideoStream(e) {
 
 function submitForm(e) {
     if (cropper) {
-        console.log(cropper);
         e.preventDefault();
 
         const croppedProfilePictureCanvas = cropper.getCroppedCanvas();
-        console.log(croppedProfilePictureCanvas);
         croppedProfilePictureCanvas.toBlob(blob => {
             const profilePicture = new File([blob], 'profile-picture.png');
             const container = new DataTransfer();
